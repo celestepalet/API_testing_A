@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.8.8 on win32)" generated="20230416 20:14:33.124" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="D:\POC\API_testing_A\wordpress\tests">
+<suite id="s1-s1" name="Test" source="D:\POC\API_testing_A\wordpress\tests\test.robot">
+<test id="s1-s1-t1" name="PUT request valid endpoint" line="10">
+<kw name="Make Put Request">
+<arg>200</arg>
+<arg>214</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${BODY}</var>
+<arg>id=214</arg>
+<arg>title=titulo de prueba</arg>
+<arg>content=</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230416 20:14:33.416" level="INFO">${BODY} = {'id': '214', 'title': 'titulo de prueba', 'content': ''}</msg>
+<status status="PASS" starttime="20230416 20:14:33.416" endtime="20230416 20:14:33.416"/>
+</kw>
+<kw name="Make Request Put" library="libraries.make_request.MakeRequest">
+<var>${response}</var>
+<arg>wp-json/wp/v2/posts</arg>
+<arg>${BODY}</arg>
+<arg>id=${id}</arg>
+<msg timestamp="20230416 20:14:33.624" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230416 20:14:33.416" endtime="20230416 20:14:33.625"/>
+</kw>
+<kw name="Validate Response Status" library="libraries.validation.Validation">
+<arg>${response}</arg>
+<arg>exp_status=${exp_status}</arg>
+<msg timestamp="20230416 20:14:33.625" level="INFO">200</msg>
+<status status="PASS" starttime="20230416 20:14:33.625" endtime="20230416 20:14:33.625"/>
+</kw>
+<kw name="Get Format Response" library="libraries.format_response.FormatResponse">
+<var>${response_with_format}</var>
+<arg>${response}</arg>
+<arg>format_json</arg>
+<msg timestamp="20230416 20:14:33.625" level="INFO">${response_with_format} = {'id': 214, 'date': '2023-04-14T03:16:20', 'date_gmt': '2023-04-14T03:16:20', 'guid': {'rendered': 'http://localhost/wordpress/2023/04/14/hola/', 'raw': 'http://localhost/wordpress/2023/04/14/hola/'},...</msg>
+<status status="PASS" starttime="20230416 20:14:33.625" endtime="20230416 20:14:33.625"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_with_format}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230416 20:14:33.625" level="INFO">{'id': 214, 'date': '2023-04-14T03:16:20', 'date_gmt': '2023-04-14T03:16:20', 'guid': {'rendered': 'http://localhost/wordpress/2023/04/14/hola/', 'raw': 'http://localhost/wordpress/2023/04/14/hola/'}, 'modified': '2023-04-16T23:14:33', 'modified_gmt': '2023-04-16T23:14:33', 'password': '', 'slug': 'hola', 'status': 'publish', 'type': 'post', 'link': 'http://localhost/wordpress/2023/04/14/hola/', 'title': {'raw': 'titulo de prueba', 'rendered': 'titulo de prueba'}, 'content': {'raw': '', 'rendered': '', 'protected': False, 'block_version': 0}, 'excerpt': {'raw': 'holaaaaa', 'rendered': '&lt;p&gt;holaaaaa&lt;/p&gt;\n', 'protected': False}, 'author': 1, 'featured_media': 0, 'comment_status': 'open', 'ping_status': 'open', 'sticky': False, 'template': '', 'format': 'standard', 'meta': [], 'categories': [1], 'tags': [], 'permalink_template': 'http://localhost/wordpress/2023/04/14/%postname%/', 'generated_slug': 'titulo-de-prueba', '_links': {'self': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'collection': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts'}], 'about': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/types/post'}], 'author': [{'embeddable': True, 'href': 'http://localhost/wordpress/wp-json/wp/v2/users/1'}], 'replies': [{'embeddable': True, 'href': 'http://localhost/wordpress/wp-json/wp/v2/comments?post=214'}], 'version-history': [{'count': 17, 'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214/revisions'}], 'predecessor-version': [{'id': 233, 'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214/revisions/233'}], 'wp:attachment': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/media?parent=214'}], 'wp:term': [{'taxonomy': 'category', 'embeddable': True, 'href': 'http://localhost/wordpress/wp-json/wp/v2/categories?post=214'}, {'taxonomy': 'post_tag', 'embeddable': True, 'href': 'http://localhost/wordpress/wp-json/wp/v2/tags?post=214'}], 'wp:action-publish': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-unfiltered-html': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-sticky': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-assign-author': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-create-categories': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-assign-categories': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-create-tags': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'wp:action-assign-tags': [{'href': 'http://localhost/wordpress/wp-json/wp/v2/posts/214'}], 'curies': [{'name': 'wp', 'href': 'https://api.w.org/{rel}', 'templated': True}]}}</msg>
+<status status="PASS" starttime="20230416 20:14:33.625" endtime="20230416 20:14:33.625"/>
+</kw>
+<status status="PASS" starttime="20230416 20:14:33.416" endtime="20230416 20:14:33.626"/>
+</kw>
+<status status="PASS" starttime="20230416 20:14:33.415" endtime="20230416 20:14:33.626"/>
+</test>
+<test id="s1-s1-t2" name="PUT request invalid endpoint" line="13">
+<kw name="Make Put Request">
+<arg>404</arg>
+<arg>''</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${BODY}</var>
+<arg>id=214</arg>
+<arg>title=titulo de prueba</arg>
+<arg>content=</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230416 20:14:33.627" level="INFO">${BODY} = {'id': '214', 'title': 'titulo de prueba', 'content': ''}</msg>
+<status status="PASS" starttime="20230416 20:14:33.627" endtime="20230416 20:14:33.627"/>
+</kw>
+<kw name="Make Request Put" library="libraries.make_request.MakeRequest">
+<var>${response}</var>
+<arg>wp-json/wp/v2/posts</arg>
+<arg>${BODY}</arg>
+<arg>id=${id}</arg>
+<msg timestamp="20230416 20:14:34.476" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20230416 20:14:33.627" endtime="20230416 20:14:34.476"/>
+</kw>
+<kw name="Validate Response Status" library="libraries.validation.Validation">
+<arg>${response}</arg>
+<arg>exp_status=${exp_status}</arg>
+<msg timestamp="20230416 20:14:34.476" level="INFO">404</msg>
+<status status="PASS" starttime="20230416 20:14:34.476" endtime="20230416 20:14:34.476"/>
+</kw>
+<kw name="Get Format Response" library="libraries.format_response.FormatResponse">
+<var>${response_with_format}</var>
+<arg>${response}</arg>
+<arg>format_json</arg>
+<msg timestamp="20230416 20:14:34.477" level="INFO">${response_with_format} = {'code': 'rest_no_route', 'message': 'No route was found matching the URL and request method.', 'data': {'status': 404}}</msg>
+<status status="PASS" starttime="20230416 20:14:34.476" endtime="20230416 20:14:34.477"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_with_format}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230416 20:14:34.477" level="INFO">{'code': 'rest_no_route', 'message': 'No route was found matching the URL and request method.', 'data': {'status': 404}}</msg>
+<status status="PASS" starttime="20230416 20:14:34.477" endtime="20230416 20:14:34.477"/>
+</kw>
+<status status="PASS" starttime="20230416 20:14:33.627" endtime="20230416 20:14:34.477"/>
+</kw>
+<status status="PASS" starttime="20230416 20:14:33.627" endtime="20230416 20:14:34.477"/>
+</test>
+<doc>Tests to verify that a post name is successfully changed
+using PUT methods in Wordpress API requests</doc>
+<status status="PASS" starttime="20230416 20:14:33.139" endtime="20230416 20:14:34.478"/>
+</suite>
+<status status="PASS" starttime="20230416 20:14:33.125" endtime="20230416 20:14:34.479"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="Test">Tests.Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
