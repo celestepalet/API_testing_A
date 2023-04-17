@@ -8,4 +8,3 @@ password = os.getenv("PASSWORD")
 
 def get_post_endpoint():
     return os.getenv("POST_ENDPOINT")
-
