@@ -1,26 +1,31 @@
+#
+# @make_request.py Copyright (c) 2023 Jalasoft.
+# 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+#
+# All rights reserved.
+#
+# This software is the confidential and proprietary information of
+# Jalasoft, ("Confidential Information"). You shall not
+# disclose such Confidential Information and shall use it only in
+# accordance with the terms of the license agreement you entered into
+# with Jalasoft.
+#
+
 import requests
-import os
-from libraries.get_url import get_auth, GetUrl
+from libraries.get_url import GetUrl
 
 
 class MakeRequest:
-    def __init__(self):
-        pass
+    """Makes request to a API endpoint"""
 
-    def make_request_put(self, path,  body=None, id='', header=None, params=None, user_name=os.getenv("USER"), \
-                         password=os.getenv("PASSWORD"), **kwargs):
-        auth = get_auth(user_name, password)
+    def make_request_put(self, path, body=None, id='', header=None, params=None, auth=None, **kwargs):
+        """Makes a PUT request to a API endpoint"""
         url = GetUrl().get_complete_url(path, id)
         response = requests.put(url, json=body, auth=auth, headers=header, params=params)
         return response
 
-    def make_request_post(self, path,  body=None, header=None, params=None, auth=None, **kwargs):        
+    def make_request_post(self, path,  body=None, header=None, params=None, auth=None, **kwargs):
+        """Makes a POST request to a API endpoint"""
         url = GetUrl().get_complete_url(path)
         response = requests.post(url, json=body, auth=auth, headers=header, params=params)
         return response
-
-    def make_request_get(self):
-        pass
-
-    def make_request_delete(self):
-        pass
