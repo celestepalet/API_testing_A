@@ -11,10 +11,6 @@ class GetUrl:
     def get_base_url(self):
         return os.getenv("URL")
 
-    def get_complete_url(self, path, id=None, **kwargs):
+    def get_complete_url(self, path, id='', **kwargs):
         url = '%s/%s/%s' % (GetUrl().get_base_url(), path, id)
-        return url
-
-def get_auth(user, passw):
-    basic = HTTPBasicAuth(user, passw)
-    return basic
+        return url 

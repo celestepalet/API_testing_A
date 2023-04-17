@@ -1,7 +1,5 @@
 from lxml import html, etree
 import json
-from libraries.make_request import MakeRequest
-from libraries.validation import Validation
 
 
 class FormatResponse:
@@ -19,7 +17,6 @@ class FormatResponse:
     def format_xml(self, response):
         response = etree.fromstring(response.content)
         return etree.tostring(response, pretty_print=True)
-        pass
 
     def format_html(self, response):
         response = html.fromstring(response.content)
@@ -35,3 +32,9 @@ dic_response_type = {
     "format_xml": FormatResponse().format_xml,
     "format_html": FormatResponse().format_html
 }
+
+#validation = Validation().validate_response_status(MakeRequest().make_request_put('wp-json/wp/v2/posts', {"id": 7, "title": "test_python_1", "content": ""}, id='7'), exp_status=200)
+#print(FormatResponse().get_format_response(MakeRequest().make_request_put('wp-json/wp/v2/posts', {"id": 7, "title": "test_python_1", "content": ""}, id='7')))
+
+#validation = Validation().validate_response_status(MakeRequest().make_request_post('wp-json/wp/v2/posts', {"title": "new title", "status": "publish"}), exp_status=201)
+#print(FormatResponse().get_format_response(MakeRequest().make_request_post('wp-json/wp/v2/posts', {"title": "new title", "status": "publish"})))

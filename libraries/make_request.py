@@ -14,8 +14,10 @@ class MakeRequest:
         response = requests.put(url, json=body, auth=auth, headers=header, params=params)
         return response
 
-    def make_request_post(self):
-        pass
+    def make_request_post(self, path,  body=None, header=None, params=None, auth=None, **kwargs):        
+        url = GetUrl().get_complete_url(path)
+        response = requests.post(url, json=body, auth=auth, headers=header, params=params)
+        return response
 
     def make_request_get(self):
         pass
