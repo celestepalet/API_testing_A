@@ -17,8 +17,8 @@ Get credentials
 Post a post
     [Arguments]   ${exp_status}
     ${post_endpoint}    Get post endpoint
-    ${body}    Create Dictionary    title=new post title 1   status=publish
-    ${response}   Make Request Post    ${post_endpoint}   body=${body}   auth=${auth}
+    ${body}    Create dictionary    title=new post title 1   status=publish
+    ${response}   Make request post    ${post_endpoint}   body=${body}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
     Log    ${response_with_format}
@@ -26,7 +26,7 @@ Post a post
 Get post id
     [Arguments]   ${exp_status}
     ${post_endpoint}    Get post endpoint
-    ${response}   Make Request Get  ${post_endpoint}   auth=${auth}
+    ${response}   Make request get  ${post_endpoint}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response   ${response}   format_json
     ${first_post}   Get list element    0   ${response_with_format}
