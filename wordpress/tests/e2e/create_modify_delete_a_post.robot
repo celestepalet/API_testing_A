@@ -20,11 +20,11 @@ Get credentials
 Post a Post
     [Arguments]   ${exp_status}
     ${post_endpoint}    Get post endpoint
-    ${BODY}    Create Dictionary    title=new post title 1   status=publish
-    ${response}   Make Request Post    ${post_endpoint}   body=${BODY}   auth=${auth}
-    validate response status  ${response}   exp_status=${exp_status}
-    ${response_with_format}   get format response  ${response}  format_json
-    log    ${response_with_format}
+    ${body}    Create Dictionary    title=new post title 1   status=publish
+    ${response}   Make Request Post    ${post_endpoint}   body=${body}   auth=${auth}
+    Validate response status  ${response}   exp_status=${exp_status}
+    ${response_with_format}   Get format response  ${response}  format_json
+    Log    ${response_with_format}
 
 Update post title
     [Arguments]   ${exp_status}   ${id_post}
