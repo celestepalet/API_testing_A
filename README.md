@@ -1,5 +1,10 @@
 # API_testing_A
 
+Authorization
+
+In order to be authenticated in Wordpress, you need to create a .env file with your credentials
+
+
 SETTING UP PROJECT
 
 1. Installing python 3.8 on Machine
@@ -24,5 +29,3 @@ In terminal use the command : robot -d results wordpress/tests/
 REFERENCE
 https://github.com/robotframework/HowToWriteGoodTestCases/blob/master/HowToWriteGoodTestCases.rst
 https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
-
-
