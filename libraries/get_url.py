@@ -5,10 +5,14 @@ class GetUrl:
     """Gets the url"""
 
     def get_base_url(self):
-        """Get the base url of the API from .env file"""
+        """Gets the base url from .env file"""
         return os.getenv("URL")
 
-    def get_complete_url(self, path, id='', **kwargs):
-        """Get the endpoint url"""
-        url = '%s/%s/%s' % (GetUrl().get_base_url(), path, id)
+    def get_extension_url(self):
+        """Gets the extension of url from .env file"""
+        return os.getenv("URL_EXTENSION")
+
+    def get_complete_url(self, endpoint, id='', **kwargs):
+        """Gets the endpoint url"""
+        url = '%s/%s/%s/%s' % (GetUrl().get_base_url(), GetUrl().get_extension_url(), endpoint, id)
         return url
