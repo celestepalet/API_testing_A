@@ -8,6 +8,7 @@ Verify that a post was deleted successfully
     Post a post   201
     Get post id   200
     Update post title   200   ${id_post}
+    Delete post    200    ${id_post}
 
 *** Keywords ***
 Get credentials
@@ -38,6 +39,14 @@ Update post title
     ${post_endpoint}    Get post endpoint
     ${body}    Create dictionary    title=change test title   content=
     ${response}   Make request put    ${post_endpoint}   body=${body}   id=${id_post}   auth=${auth}
+    Validate response status  ${response}   exp_status=${exp_status}
+    ${response_with_format}   Get format response  ${response}  format_json
+    Log   ${response_with_format}
+
+Delete post
+    [Arguments]   ${exp_status}   ${id_post}
+    ${post_endpoint}    Get post endpoint
+    ${response}   Make request delete    ${post_endpoint}   id=${id_post}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
     Log   ${response_with_format}
