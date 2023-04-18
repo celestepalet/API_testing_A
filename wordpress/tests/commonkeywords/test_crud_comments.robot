@@ -37,7 +37,7 @@ Get comment id
 Update comment content
     [Arguments]   ${exp_status}   ${id_comment}
     ${body}    Create dictionary    post=1    content=content edited in the new comment   
-    ${response}   Make request post id    ${endpoint}   body=${body}   id=${id_comment}   auth=${auth}
+    ${response}   Make request post    ${endpoint}   body=${body}   id=${id_comment}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
     Log   ${response_with_format}
