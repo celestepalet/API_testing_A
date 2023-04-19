@@ -7,7 +7,6 @@ class Authentication:
     def get_basic_auth(self, username=username, password=password, **kwargs):
         """Gets basic authentication using username and password"""
         auth = HTTPBasicAuth(username, password)
-        print([username, password])
         return auth
     
     def get_token_auth(self, token):
