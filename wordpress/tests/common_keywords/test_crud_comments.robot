@@ -1,6 +1,8 @@
 *** Settings ***
 Library      wordpress.src.common_imports.CommonLibraries
 
+Test Setup  Create a post for comment   201     posts
+
 *** Variables ***
 ${endpoint}     comments
 
@@ -19,7 +21,7 @@ Get credentials
 
 Post a comment
     [Arguments]   ${exp_status}
-    ${body}    Create dictionary    author=1   content=This is a new comment on the post     post=1
+    ${body}    Create dictionary    author=1   content=This is a new comment on the post     post=${id_post}
     ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
@@ -36,7 +38,7 @@ Get comment id
 
 Update comment content
     [Arguments]   ${exp_status}   ${id_comment}
-    ${body}    Create dictionary    post=1    content=content edited in the new comment   
+    ${body}    Create dictionary    post=${id_post}    content=content edited in the new comment
     ${response}   Make request post    ${endpoint}   body=${body}   id=${id_comment}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
@@ -48,3 +50,14 @@ Move comment to trash
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
     Log   ${response_with_format}
+
+Create a post for comment
+    [Arguments]   ${exp_status}   ${endpoint}
+    Get credentials
+    ${body}    Create dictionary    title=post for test comments   status=publish
+    ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
+    Validate response status  ${response}   exp_status=${exp_status}
+    ${response_with_format}   Get format response  ${response}  format_json
+    Log    ${response_with_format}
+    ${id_post}  Get dictionary value    id  ${response with format}
+    set suite variable  ${id_post}
