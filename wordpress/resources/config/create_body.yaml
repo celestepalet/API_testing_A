@@ -1,13 +1,14 @@
 create_body: {
     "attributes": {
-        "FIRSTNAME": "Raul11",
-        "LASTNAME": "Camargos11"
+        "FIRSTNAME": "Cristhian1111",
+        "LASTNAME": "Vargas1111111"
     },
     "listIds": [
+            14
     ],
     "updateEnabled": false,
-    "email": "raul_camargos11@ApiTesting.com",
-    "ext_id": "102",
+    "email": "cristian_vargas11111@ApiTesting.com",
+    "ext_id": "10111",
     "emailBlacklisted": false,
     "smsBlacklisted": false
 }

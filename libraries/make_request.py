@@ -11,6 +11,7 @@ class MakeRequest:
         url = GetUrl().get_complete_url(path, id)
         logger.info("Method: PUT")
         logger.info(f"URL: {url}")
+        print(body)
         response = requests.put(url, json=body, auth=auth, headers=header, params=params)
         return response
 
@@ -27,6 +28,7 @@ class MakeRequest:
         url = GetUrl().get_complete_url(path, id)
         logger.info("Method: POST")
         logger.info(f"URL: {url}")
+        print(body)
         response = requests.post(url, json=body, auth=auth, headers=header, params=params)
         return response
     
