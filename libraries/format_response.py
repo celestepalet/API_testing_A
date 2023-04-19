@@ -25,7 +25,7 @@ class FormatResponse:
         response = html.fromstring(response.content)
         return html.tostring(response, pretty_print=True)
 
-    def get_format_response(self, response, response_type='format_text'):
+    def get_format_response(self, response, response_type='format_json'):
         """Instances the method with tha required format"""
         response_with_format = dic_response_type[response_type]
         return response_with_format(response)
