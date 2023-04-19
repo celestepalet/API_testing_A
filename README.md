@@ -13,7 +13,7 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
 5. Required python libraries
 6. References
 
-    1.  Getting started
+   1.  Getting started
 
         For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
         1. Install WordPress locally and its DB:
@@ -31,7 +31,7 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
         5. Install requirements (terminal command: pip install -r requirements.txt)
 
 
-    2. Initial Configuration
+   2. Initial Configuration
 
         1. Set Environment
           Configure the environment in IDE, setting the follow environment variables.
@@ -50,11 +50,11 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
                   In "Working directory" add the project path
                   6. In "EnvFile" tab select "Enable EnvFile" and add the .env file of the project
         
-        2. Set PYTHONPATH 
+       2. Set PYTHONPATH 
           In bash terminal run the command: PYTHONPATH=$PWD
 
 
-    3. Framework Structure
+  3. Framework Structure
 
         /
         ├── libraries                         (Custom Python libraries)
@@ -81,7 +81,7 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
                 ├── crud                      (Tests cases for minimal funtionalities)
                 └── commonkeywords            (Keywords that are common in several files)
             
-       4. Execution examples
+     4. Execution examples
 
              The Test can be runned executing the following commands:
 
