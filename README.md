@@ -13,7 +13,8 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
 5. Required python libraries
 6. References
 
-  1.  Getting started
+
+    1.  Getting started
 
         For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
         1. Install WordPress locally and its DB:
