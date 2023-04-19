@@ -12,5 +12,3 @@ Verify that a comment can be created edited and deleted successfully
     Verify Comment Exists    ${comment_id}
     Edit Comment    This is edited content on a comment    ${comment_id}
     Delete Comment    ${comment_id}
-
-    
