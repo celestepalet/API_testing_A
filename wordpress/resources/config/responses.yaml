@@ -1,0 +1,7 @@
+no_password_response: {"code":"rest_missing_callback_param","message":"Missing parameter(s): password","data":{"status":400,"params":["password"]}}
+no_username_response: {"code":"rest_missing_callback_param","message":"Missing parameter(s): username","data":{"status":400,"params":["username"]}}
+no_email_response: {"code":"rest_missing_callback_param","message":"Missing parameter(s): email","data":{"status":400,"params":["email"]}}
+not_found: {"code":"rest_no_route","message":"No route was found matching the URL and request method.","data":{"status":404}}
+username_existing: {"code":"existing_user_login","message":"Sorry, that username already exists!","data":null}
+email_existing: {"code":"existing_user_email","message":"Sorry, that email address is already used!","data":null}
+invalid_id_message: {"code":"rest_user_invalid_id","message":"Invalid user ID.","data":{"status":404}}
