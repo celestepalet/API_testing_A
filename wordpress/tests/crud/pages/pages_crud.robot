@@ -21,7 +21,7 @@ Get credentials
 
 Verify new page can be created
     [Arguments]   ${exp_status}
-    ${body}    Create dictionary    title=new page 1    content=it is the new page 1   status=publish
+    ${body}    Create dictionary    title=new page 1    content=it is the new page    status=publish
     ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
