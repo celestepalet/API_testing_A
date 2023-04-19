@@ -10,17 +10,17 @@ class Authentication:
         auth = HTTPBasicAuth(username, password)
         return auth
     
-    def get_token_auth(self, token):
+    def get_token_auth(self, token, key="token"):
         """Gets authentication using token"""
-        header = token
+        header = {key : token}
         return header
     
-    def get_apikey_auth(self, apikey):
+    def get_apikey_auth(self, apikey, key="apikey"):
         """Gets authentication using apikey"""
-        auth = apikey
-        return auth
+        header = {key : apikey}
+        return header
     
-    def get_apikey_token(self, apikey, token):
+    def get_apikey_token(self, apikey, token, key="apikey", key_token="token"):
         """Gets authentication using apikey and token"""
-        params = {"key": apikey, "token": token}
+        params = {key: apikey, key_token: token}
         return params

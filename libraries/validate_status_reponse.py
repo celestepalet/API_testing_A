@@ -1,6 +1,6 @@
 from robot.api import logger
 
-class Validation:
+class ValidateStatusReponse:
     """Validates a request response"""
 
     def validate_response_status(self, response, exp_status=200, **kwargs):
