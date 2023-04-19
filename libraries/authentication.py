@@ -1,5 +1,5 @@
 from requests.auth import HTTPBasicAuth
-from wordpress.resources.config.config import username, password
+from wordpress.resources.config.config import username, password, apikey
 
 
 class Authentication:
@@ -15,7 +15,7 @@ class Authentication:
         header = token
         return header
     
-    def get_apikey_auth(self, apikey):
+    def get_apikey_auth(self, apikey=apikey):
         """Gets authentication using apikey"""
         auth = apikey
         return auth

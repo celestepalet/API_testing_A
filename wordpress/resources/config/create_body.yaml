@@ -1,0 +1,13 @@
+create_body: {
+    "attributes": {
+        "FIRSTNAME": "Raul11",
+        "LASTNAME": "Camargos11"
+    },
+    "listIds": [
+    ],
+    "updateEnabled": false,
+    "email": "raul_camargos11@ApiTesting.com",
+    "ext_id": "102",
+    "emailBlacklisted": false,
+    "smsBlacklisted": false
+}
