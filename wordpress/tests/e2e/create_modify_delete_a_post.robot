@@ -48,3 +48,4 @@ Move post to trash
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response  ${response}  format_json
     Log   ${response_with_format}
+
