@@ -1,6 +1,7 @@
 from requests.auth import HTTPBasicAuth
 from wordpress.resources.config.config import username, password
 
+
 class Authentication:
     """Gets authentication to API for different types"""
 
