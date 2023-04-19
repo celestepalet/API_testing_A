@@ -2,7 +2,6 @@ import requests
 from libraries.get_url import GetUrl
 from robot.api import logger
 
-
 class MakeRequest:
     """Makes request to a API endpoint"""
 

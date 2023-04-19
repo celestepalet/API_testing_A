@@ -8,5 +8,3 @@ class Validation:
         assert response.status_code == exp_status, 'Actual response is %s, expect: %s' % \
                                                    (response.status_code, int(exp_status))
         logger.info(f'Actual response is {response.status_code}, expect: {exp_status}')
-
-

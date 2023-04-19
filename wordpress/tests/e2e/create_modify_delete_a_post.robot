@@ -40,9 +40,9 @@ Update post title
     Log   ${response_with_format}
 
 Move post to trash
-    [Arguments]   ${exp_status}   ${id_post}
-    ${response}   Make request delete    ${endpoint}   id=${id_post}   auth=${auth}
-    Validate response status  ${response}   exp_status=${exp_status}
-    ${response_with_format}   Get format response  ${response}  format_json
+    [Arguments]    ${exp_status}    ${id_post}
+    ${response}    Make request delete    ${endpoint}    id=${id_post}    auth=${auth}
+    Validate response status    ${response}    exp_status=${exp_status}
+    ${response_with_format}    Get format response    ${response}    format_json
     Log   ${response_with_format}
 
