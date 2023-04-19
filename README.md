@@ -56,30 +56,30 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
 
   3. Framework Structure
 
-        /
-        ├── libraries                         (Custom Python libraries)
-        │   ├── authentication                (Method for get API authentication)
-        │   ├── format_response               (Gives format to request response)
-        │   ├── get_element                   (Gets element from iterable variable)
-        │   ├── get_url                       (Provides the basic and complete url for the request)
-        │   ├── make_request                  (Makes a request to API endpoint)
-        │   └── validation                    (Validate the status code of a response)
-        |
-        ├── results                           (Save the logs and reports)
-        |
-        └── wordpress                         (Robot-framework and python files specific for WordPress API)
-            ├── src                           (Python files personalize for each endpoint)       
-            |                  
-            ├── resources                     (Files to provide resources to the project)
-            |   ├── config                    (Files to configurate the project)
-            |   |      └── config.py          (File to provide the environment variables to the project)  
-            |   |                  
-            |   └── json                      (Json files with schemas)
-            |                        
-            └── tests                         (Set of test suites or test cases in robot-framework files)
-                ├── e2e                       (End to end tests cases)
-                ├── crud                      (Tests cases for minimal funtionalities)
-                └── commonkeywords            (Keywords that are common in several files)
+          /
+          ├── libraries                         (Custom Python libraries)
+          │   ├── authentication                (Method for get API authentication)
+          │   ├── format_response               (Gives format to request response)
+          │   ├── get_element                   (Gets element from iterable variable)
+          │   ├── get_url                       (Provides the basic and complete url for the request)
+          │   ├── make_request                  (Makes a request to API endpoint)
+          │   └── validation                    (Validate the status code of a response)
+          |
+          ├── results                           (Save the logs and reports)
+          |
+          └── wordpress                         (Robot-framework and python files specific for WordPress API)
+              ├── src                           (Python files personalize for each endpoint)       
+              |                  
+              ├── resources                     (Files to provide resources to the project)
+              |   ├── config                    (Files to configurate the project)
+              |   |      └── config.py          (File to provide the environment variables to the project)  
+              |   |                  
+              |   └── json                      (Json files with schemas)
+              |                        
+              └── tests                         (Set of test suites or test cases in robot-framework files)
+                  ├── e2e                       (End to end tests cases)
+                  ├── crud                      (Tests cases for minimal funtionalities)
+                  └── commonkeywords            (Keywords that are common in several files)
             
      4. Execution examples
 
