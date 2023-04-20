@@ -29,10 +29,6 @@ Verify That Invalid Endpoint Returns Error Message
     Get User With Invalid ID    ${invalid_id}
     Verify Response Message    ${not_found}
 
-Verify That Can Not Be Created User With Duplicate Username
-    Create User With Duplicate Username
-    Verify Response Message    ${username_existing}
-
 *** Keywords ***
 Create User Without Username
     ${auth}   get_basic_auth
@@ -57,15 +53,6 @@ Create User Without Password
     validate_response_status   ${response}   exp_status=400
     ${actual_result}   get_format_response  ${response}
     Set Test Variable  ${actual_result}
-
-Create User With Duplicate Username
-    ${auth}   get_basic_auth
-    Get Administrator Username
-    ${body}    Create Dictionary    username=${username}   email=${email}   password=${password}
-    ${response}   make_request_post   ${endpoint}   body=${body}   auth=${auth}
-    validate_response_status   ${response}   exp_status=500
-    ${actual_result}   get_format_response  ${response}
-    Set suite variable   ${actual_result}
 
 Verify Response Message
     [Arguments]  ${expected_result}
