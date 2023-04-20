@@ -4,14 +4,14 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
 
 ## Table of contents
 
-1. Getting started
-2. Initial configuration
-  2.1. Set environment
-  2.2. Set PYTHONPATH
-3. Framework Structure
-4. Execution
-5. Required python libraries
-6. References
+            1. Getting started
+            2. Initial configuration
+                2.1. Set environment
+                2.2. Set PYTHONPATH
+            3. Framework Structure
+            4. Execution
+            5. Required python libraries
+            6. References
 
 
    1.Getting started
