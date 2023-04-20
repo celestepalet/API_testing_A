@@ -11,10 +11,10 @@ ${endpoint}     categories
 Create A Category
     [Arguments]   ${name}    ${description}
     ${auth}=    Get Credentials
-    ${body}    Create dictionary    name=${name}    description=${description}
+    ${body}    Create Dictionary    name=${name}    description=${description}
     ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
     validate_response_status  ${response}   exp_status=201
-    ${response_with_format}   get_format_response  ${response}  format_json
+    ${response_with_format}   get_format_response  ${response}
     Log    ${response_with_format}
     ${id_category}    get_dictionary_value    id    ${response_with_format}
     [Return]    ${id_category}
@@ -22,32 +22,32 @@ Create A Category
 Get All Categories
     ${auth}=    Get Credentials
     ${response}   make_request_get  ${endpoint}   auth=${auth}
-    validate_response_status  ${response}   exp_status=200
-    ${response_with_format}   get_format_response   ${response}   format_json
+    validate_response_status  ${response}
+    ${response_with_format}   get_format_response   ${response}
     Log    ${response_with_format}
 
 Get Category Created With Id
     [Arguments]   ${id_category}
     ${auth}=    Get Credentials
     ${response}   make_request_get  ${endpoint}    id=${id_category}   auth=${auth}
-    validate_response_status  ${response}   exp_status=200
-    ${response_with_format}   get_format_response   ${response}   format_json
+    validate_response_status  ${response}
+    ${response_with_format}   get_format_response   ${response}
     Log    ${response_with_format}
 
 Update Category Description
     [Arguments]   ${id_category}    ${description}  
     ${auth}=    Get Credentials
-    ${body}    Create dictionary    description=${description}
+    ${body}    Create Dictionary    description=${description}
     ${response}   make_request_put    ${endpoint}   body=${body}   id=${id_category}   auth=${auth}
-    validate_response_status  ${response}   exp_status=200
-    ${response_with_format}   get_format_response  ${response}  format_json
+    validate_response_status  ${response}
+    ${response_with_format}   get_format_response  ${response}
     Log   ${response_with_format}
 
 Delete A Category
     [Arguments]   ${id_category}
     ${auth}=    Get Credentials
-    ${params}    Create dictionary    force=true
+    ${params}    Create Dictionary    force=true
     ${response}   make_request_delete    ${endpoint}   id=${id_category}   params=${params}    auth=${auth}
-    validate_response_status  ${response}   exp_status=200
-    ${response_with_format}   get_format_response  ${response}  format_json
+    validate_response_status  ${response}
+    ${response_with_format}   get_format_response  ${response}
     Log   ${response_with_format}
