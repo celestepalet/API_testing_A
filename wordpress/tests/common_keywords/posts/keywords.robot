@@ -7,7 +7,7 @@ ${endpoint}    posts
 *** Keywords ***
 Create a post
     [Arguments]    ${exp_status}
-    Get credentials
+    ${auth}=    Get Credentials
     ${body}    Create dictionary    title=new post title3    status=publish
     ${response}    Make request post    ${endpoint}    body=${body}    auth=${auth}
     Validate response status    ${response}    exp_status=${exp_status}
@@ -16,7 +16,7 @@ Create a post
     
 Get a post id
     [Arguments]    ${exp_status}
-    Get credentials
+    ${auth}=    Get Credentials
     ${response}    Make request get    ${endpoint}    auth=${auth}
     Validate response status    ${response}    exp_status=${exp_status}
     ${response_with_format}    Get format response    ${response}    format_json
@@ -27,7 +27,7 @@ Get a post id
 
 Delete a post
     [Arguments]    ${exp_status}    ${id_post}
-    Get credentials
+    ${auth}=    Get Credentials
     ${response}    Make request delete    ${endpoint}    ${id_post}    auth=${auth}
     Validate response status    ${response}    exp_status=${exp_status}
     ${response_with_format}    Get format response    ${response}    format_json
