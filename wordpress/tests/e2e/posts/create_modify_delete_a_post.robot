@@ -1,6 +1,6 @@
 *** Settings ***
 Library      wordpress.src.common_imports.CommonLibraries
-Resource     ../common_keywords/get_credentials.robot
+Resource     ../../common_keywords/get_credentials.robot
 
 *** Variables ***
 ${endpoint}     posts
