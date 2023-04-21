@@ -7,7 +7,7 @@ Variables        ../../../resources/config/responses.yaml
 
 *** Test Cases ***
 Verify That The Parent Category Parameter Of A Category Can Be Updated With An Allowed Value
-    ${id_category}    Create A Category with a parent    category with a parent    category description    40
+    ${id_category}    Create A Category with a parent    category with a parent    category description    1
     Delete A Category    ${id_category}
 
 Verify That The Parent Category Parameter Of A Category Can Be Updated With A Non-Existent Value

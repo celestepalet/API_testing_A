@@ -1,6 +1,6 @@
 from robot.api import logger
 from assertpy import assert_that
-import json
+
 
 class ValidateContent:
     """Validates a request response"""
