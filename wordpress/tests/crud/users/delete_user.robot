@@ -1,17 +1,11 @@
 *** Settings ***
 Documentation  Tests to verify that the user can be deleted
 ...            and the API return a status code 200
-Resource       ../../common_keywords/users/users.robot
-Variables      ../../../resources/config/responses.yaml
-
-Suite Setup  Create a new user   administrator
+Resource       ../../common_keywords/users/delete_users.robot
+Resource       ../../common_keywords/users/create_users.robot
 
 *** Test Cases ***
-Verify that a specific user can be deleted and returns a status code 200
-    Delete user  ${id_user}
-    Verify the status code    200
-    Get a user   ${id_user}
-    Verify response message   ${invalid_id_message}
-
-
-
+Verify That Specific User Can Be Deleted By ID
+    ${id_user}  Get ID From New User
+    Delete User By ID  ${id_user}
+    Verify That User Is Not Displayed In Users List

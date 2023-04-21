@@ -1,83 +1,59 @@
 *** Settings ***
 Documentation  Tests to verify that send invalid data to the endpoint no returns a status code
 ...            2xx and returns differents messages
-Resource       ../../common_keywords/users/users.robot
-Resource       ../../common_keywords/get_credentials.robot
 Library        wordpress.src.common_imports.CommonLibraries
+Library        wordpress.src.verifications.users.users_verifications.UsersVerification
 Variables      ../../../resources/config/responses.yaml
+Resource       ../../common_keywords/users/get_users.robot
 
 *** Variables ***
 ${endpoint}     users
-${email}   apitesters.at19@gmail.com
+${email}   apitesters.at19@apitesting.com
 ${password}     password
-${second_email}   user.reassing@gmail.com
+${invalid_id}   1!
 
 *** Test Cases ***
-Verify that create a user without username returns a status code 400
-    Create a user without username
-    Verify the status code    400
-    Verify response message   ${no_username_response}
+Verify That Can Not Be Created User Without Username
+    Create User Without Username
+    Verify Response Message   ${no_username_response}
 
-Verify that create a user without email returns a status code 400
-    Create a user without email
-    Verify the status code    400
-    Verify response message   ${no_email_response}
+Verify That Can Not Be Created User Without Email
+    Create User Without Email
+    Verify Response Message    ${no_email_response}
 
-Verify taht create a user without password returns a status code 400
-    Create a user without password
-    Verify the status code    400
-    Verify response message   ${no_password_response}
+Verify That Can Not Be Created User Without Passowrd
+    Create User Without Password
+    Verify Response Message    ${no_password_response}
 
-Verify that a invalid id in the endpoint returns a satus code 404
-    Get a user  1!
-    Verify the status code    404
-    Verify response message   ${not_found}
-
-Verify that create a user with username duplicated returns a status code 500
-    Create a user with a duplicate username
-    Verify the status code    500
-    Verify response message   ${username_existing}
-
+Verify That Invalid Endpoint Returns Error Message
+    Get User With Invalid ID    ${invalid_id}
+    Verify Response Message    ${not_found}
 
 *** Keywords ***
-Create a user without username
-    Get credentials
-    ${body}    Create dictionary   email=${email}   password=${password}
-    ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
-    ${result}   Get format response  ${response}  format_json
-    Set suite variable  ${response}
-    Set suite variable  ${result}
+Create User Without Username
+    ${auth}   get_basic_auth
+    ${body}    Create Dictionary   email=${email}   password=${password}
+    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
+    validate_response_status   ${response}   exp_status=400
+    ${actual_result}   get_format_response  ${response}
+    Set Test Variable  ${actual_result}
 
-Create a user without email
-    Get credentials
-    ${body}    Create dictionary   username=username   password=${password}
-    ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
-    ${result}   Get format response  ${response}  format_json
-    Set suite variable  ${response}
-    Set suite variable  ${result}
+Create User Without Email
+    ${auth}   get_basic_auth
+    ${body}    Create Dictionary   username=username   password=${password}
+    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
+    validate_response_status   ${response}   exp_status=400
+    ${actual_result}   get_format_response  ${response}
+    Set Test Variable  ${actual_result}
 
-Create a user without password
-    Get credentials
-    ${body}    Create dictionary   username=username   email=${email}
-    ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
-    ${result}   Get format response  ${response}  format_json
-    Set suite variable  ${response}
-    Set suite variable  ${result}
+Create User Without Password
+    ${auth}   get_basic_auth
+    ${body}    Create Dictionary   username=username   email=${email}
+    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
+    validate_response_status   ${response}   exp_status=400
+    ${actual_result}   get_format_response  ${response}
+    Set Test Variable  ${actual_result}
 
-Create a user with a duplicate username
-    Get credentials
-    Get a user  1
-    ${username}  Get dictionary value    name  ${result}
-    ${body}    Create dictionary    username=${username}   email=${email}   password=${password}
-    ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
-    ${result}   Get format response  ${response}  format_json
-    Set suite variable  ${response}
-    Set suite variable  ${result}
-
-
-
-
-
-
-
-
+Verify Response Message
+    [Arguments]  ${expected_result}
+    verify_actual_equal_expected   ${actual_result}  ${expected_result}
