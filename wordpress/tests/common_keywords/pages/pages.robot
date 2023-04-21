@@ -14,9 +14,10 @@ List Pages
     validate_response_status  ${response}
     Set Test Variable  ${actual_result}
 
-Create Page
+Create Page With Desired Status
+    [Arguments]    ${status}
     ${auth}   Get basic auth
-    ${body}    Create Dictionary    title=new page 1    content=it is the new page    status=publish
+    ${body}    Create Dictionary    title=new page 1    content=it is the new page    status=${status}
     ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
     ${expected_result}   get_format_response  ${response}
     ${id_page}  get_dictionary_value   id   ${expected_result}
@@ -34,9 +35,16 @@ Verify Page
     Log    ${actual_result}
     verify_actual_equal_expected   ${expected_result}   ${actual_result}   ${ignore}
 
-Update Page
+Verify The Page Changes The Status
+    Verify Page
+
+Verify The Page Was Created
+    Verify Page
+
+Update Page To Other Status
+    [Arguments]    ${status}
     ${auth}   Get basic auth
-    ${body}    Create Dictionary    title=title changed    content=content changed
+    ${body}    Create Dictionary    title=title changed    content=content changed   status=${status}
     ${response}   make_request_put    ${endpoint}   body=${body}   id=${id_page}   auth=${auth}
     ${expected_result}   get_format_response  ${response}
     validate_response_status  ${response}
