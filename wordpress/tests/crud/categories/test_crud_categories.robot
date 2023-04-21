@@ -6,9 +6,9 @@ Resource         ../../common_keywords/categories/categories.robot
 
 *** Test Cases ***
 Verify a category is created, updated and deleted successfully
-    ${id_category}=    Create A Category    New category    This is a new category
+    ${id_category}=    Create A Category    New category21    This is a new category21
     Get Category Created With Id    ${id_category}    
-    Update Category Description    ${id_category}    This is a description updated
+    Update Category Description    ${id_category}    This is a description updated21
     Delete A Category    ${id_category}
 
 Verify all categories are listed successfully
