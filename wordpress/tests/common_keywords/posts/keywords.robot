@@ -138,3 +138,10 @@ Update A Post With 5000 Characters
     ${body}    Create Dictionary    title=${chars}
     Update A Post    ${post_id}    ${body}
 
+Delete a post
+    [Arguments]    ${exp_status}    ${id_post}
+    ${auth}    Get credentials
+    ${response}    Make request delete    ${endpoint}    ${id_post}    auth=${auth}
+    Validate response status    ${response}    exp_status=${exp_status}
+    ${response_with_format}    Get format response    ${response}    format_json
+    Log    ${response_with_format} 

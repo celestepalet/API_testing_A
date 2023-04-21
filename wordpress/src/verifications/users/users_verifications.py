@@ -27,4 +27,15 @@ class UsersVerification:
             assert_that(element).does_not_contain_value(value)
 
 
+    def verify_value_edited(self, actual, actual_value, old, old_value):
+        """Verify that the actual result does not have a specific value"""
+        logger.info(f'The past email: {old_value}')
+        logger.info(f'The actual email: {old_value}')
+        logger.info(f'Past result: {actual}')
+        logger.info(f'Actual result: {actual}')
+        assert_that(actual).does_not_contain_value(old)
+        assert_that(actual).contains_value(actual_value)
+
+
+
 

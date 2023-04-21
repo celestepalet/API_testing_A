@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify that users with different roles can be created successfully
 ...            and the API returns a status code 201 and the user record.
-Resource       ../../common_keywords/users/create_users.robot
-Resource       ../../common_keywords/users/delete_users.robot
+Resource       ../../common_keywords/users/users_imports.robot
 
 Test Teardown  Delete New User Created
 
@@ -10,7 +9,6 @@ Test Teardown  Delete New User Created
 Verify That New User Can Be Created Whit The Administrator Role
     Create New Administrator User
     Verify That New User Was Crated
-
 
 Verify That New User Can Be Created Whit The Editor Role
     Create New Editor User
