@@ -1,10 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify that send invalid data to the endpoint no returns a status code
 ...            2xx and returns differents messages
-Library        wordpress.src.common_imports.CommonLibraries
-Library        wordpress.src.verifications.users.users_verifications.UsersVerification
-Variables      ../../../resources/config/responses.yaml
-Resource       ../../common_keywords/users/get_users.robot
+Resource       ../../common_keywords/users/users_imports.robot
 
 *** Variables ***
 ${endpoint}     users
@@ -31,27 +28,18 @@ Verify That Invalid Endpoint Returns Error Message
 
 *** Keywords ***
 Create User Without Username
-    ${auth}   get_basic_auth
     ${body}    Create Dictionary   email=${email}   password=${password}
-    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
-    validate_response_status   ${response}   exp_status=400
-    ${actual_result}   get_format_response  ${response}
+    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Create User Without Email
-    ${auth}   get_basic_auth
     ${body}    Create Dictionary   username=username   password=${password}
-    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
-    validate_response_status   ${response}   exp_status=400
-    ${actual_result}   get_format_response  ${response}
+    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Create User Without Password
-    ${auth}   get_basic_auth
     ${body}    Create Dictionary   username=username   email=${email}
-    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
-    validate_response_status   ${response}   exp_status=400
-    ${actual_result}   get_format_response  ${response}
+    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Verify Response Message
