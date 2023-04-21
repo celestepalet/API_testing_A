@@ -7,4 +7,3 @@ Resource     delete_users.robot
 Resource     get_users.robot
 Resource     modify_users.robot
 Variables    ../../../resources/config/responses.yaml
-
