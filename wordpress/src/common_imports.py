@@ -8,5 +8,6 @@ from wordpress.src.actions.posts.random_names import RandomValues
 from libraries.wordpress_api import WordPressApi
 
 class CommonLibraries(ValidateStatusReponse, FormatResponse, MakeRequest, Authentication, GetElement, RandomValues, WordPressApi, ValidateContent):
+
     def __init__(self):
         pass
