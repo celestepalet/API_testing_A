@@ -2,148 +2,172 @@
 
 This is a Hybrid Framework for test the main functionalities of WordPress REST API. The framework is developed using Robot-Framework and Python, executed on Docker images of WordPress and MySQL.
 
-## Table of contents
+### Table of contents
 
-            1. Getting started
-            2. Initial configuration
-                2.1. Set environment
-                2.2. Set PYTHONPATH
-            3. Framework Structure
-            4. Execution
-            5. Required python libraries
-            6. References
+1. Getting started
+2. Initial configuration
+
+    2.1. Set environment
+
+    2.2. Set PYTHONPATH
+3. Framework Structure
+4. Execution
+5. Required python libraries
+6. References
+
+------------------------
+### 1. Getting started
+
+For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
+1. Install WordPress locally and its DB:
+
+   1. Install Docker and docker compose 
+   2. Download the docker-compose in https://github.com/celestepalet/Run-Wordpress-Locally
+   3. In a bash terminal run $ docker compose up -d 
+   4. Go to http://localhost:80/
+   5. Set English Language and follow the instructions for finish the installation 
+   6. Install in WordPress the plugin "WordPress REST API Authentication"
+   7. Activate the plugin
+   
+2. Install Python 3.8
+3. Clone the repository
+3. Create a virtual environment with pip 23.0.1(terminal command: pip -m venv venv)
+4. Activate your environment (terminal command for window: venv\Scripts\activate) (terminal command for linux: venv/bin/activate)
+5. Install requirements (terminal command: pip install -r requirements.txt)
 
 
-   1.Getting started
-
-        For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
-        1. Install WordPress locally and its DB:
-                                1. Install Docker and docker compose 
-                                2. Download the docker-compose in https://github.com/celestepalet/Run-Wordpress-Locally
-                                3. In a bash terminal run $ docker compose up -d
-                                4. Go to http://localhost:80/ 
-                                5. Set English Language and follow the instructions for finish the installation
-                                6. Install in WordPress the plugin "WordPress REST API Authentication"
-                                7. Activate the plugin
-
-        2. Install Python 3.8
-        3. Clone the repository
-        3. Create a virtual environment with pip 23.0.1(terminal command: pip -m venv venv)
-        4. Activate your environment (terminal command for window: venv\Scripts\activate) (terminal command for linux: venv/bin/activate)
-        5. Install requirements (terminal command: pip install -r requirements.txt)
+### 2. Initial Configuration
 
 
-  2.Initial Configuration
+2.1. Set Environment:
 
-        1. Set Environment
-          Configure the environment in IDE, setting the follow environment variables.
-
-          Environment variables used:
-
-          ![img.png](img.png)
-
-            For pycharm:
-                  1. Install EnvFile
-                  2. Restart IDE
-                  3. Edit Run Configuration
-                  4. Add new python run configuration
-                  5. In "Configuration" tab select: In "Module name" write robot
-                  In "Parameters" write -d results wordpress/tests
-                  In "Working directory" add the project path
-                  6. In "EnvFile" tab select "Enable EnvFile" and add the .env file of the project
+For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
         
-       2. Set PYTHONPATH 
-          In bash terminal run the command: PYTHONPATH=$PWD
+1.Install WordPress locally and its DB:
+  - Install Docker and docker compose 
+  - Download the docker-compose in https://github.com/celestepalet/Run-Wordpress-Locally
+  - In a bash terminal run $ docker compose up -d
+  - Go to http://localhost:80/ 
+  - Set English Language and follow the instructions for finish the installation
+  - Install in WordPress the plugin "WordPress REST API Authentication"
+  - Activate the plugin
 
 
- 3.Framework Structure
+Configure the environment in IDE, setting the follow environment variables.
 
-          /
-          ├── libraries                         (Custom Python libraries)
-          │   ├── authentication                (Method for get API authentication)
-          │   ├── format_response               (Gives format to request response)
-          │   ├── get_element                   (Gets element from iterable variable)
-          │   ├── get_url                       (Provides the basic and complete url for the request)
-          │   ├── make_request                  (Makes a request to API endpoint)
-          │   └── validation                    (Validate the status code of a response)
-          |
-          ├── results                           (Save the logs and reports)
-          |
-          └── wordpress                         (Robot-framework and python files specific for WordPress API)
-              ├── src                           (Python files personalize for each endpoint)       
-              |                  
-              ├── resources                     (Files to provide resources to the project)
-              |   ├── config                    (Files to configurate the project)
-              |   |      └── config.py          (File to provide the environment variables to the project)  
-              |   |                  
-              |   └── json                      (Json files with schemas)
-              |                        
-              └── tests                         (Set of test suites or test cases in robot-framework files)
-                  ├── e2e                       (End to end tests cases)
-                  ├── crud                      (Tests cases for minimal funtionalities)
-                  └── commonkeywords            (Keywords that are common in several files)
+Environment variables used:
+
+| Variable | Value                   | Description                                                         |
+|---------|-------------------------|---------------------------------------------------------------------|
+| USER    | your WordPress username | This is your WordPress project username                             |
+| PASSWORD | your WordPress password | This is your WordPress project password                             |
+| URL     | http://localhost        | This is the base URL where your app is running                      |
+| URL_EXTENSION| wp-json/wp/v2           | This is teh part os the url that you nedd for acces to the endpoint |
+
+For pycharm:
+
+  - Install EnvFile plugin
+  - Restart IDE
+  - Edit Run Configuration
+  - Add new python run configuration
+  - In "Configuration" tab select: 
+    - In "Module name" write robot
+    - In "Parameters" write -d results wordpress/tests
+    - In "Working directory" add the project path
+  - In "EnvFile" tab select "Enable EnvFile" and add the .env file of the project
+        
+2.2. Set PYTHONPATH:
+
+In bash terminal run the command: PYTHONPATH=$PWD
+
+
+### 3. Framework Structure
+
+         /
+         ├── libraries                         (Custom Python libraries)
+         │   ├── authentication                (Method for get API authentication)
+         │   ├── format_response               (Gives format to request response)
+         │   ├── get_element                   (Gets element from iterable variable)
+         │   ├── get_url                       (Provides the basic and complete url for the request)
+         │   ├── make_request                  (Makes a request to API endpoint)
+         │   └── validation                    (Validate the status code of a response)
+         |
+         ├── results                           (Save the logs and reports)
+         |
+         └── wordpress                         (Robot-framework and python files specific for WordPress API)
+             ├── src                           (Python files personalize for each endpoint)       
+             |                  
+             ├── resources                     (Files to provide resources to the project)
+             |   ├── config                    (Files to configurate the project)
+             |   |      └── config.py          (File to provide the environment variables to the project)  
+             |   |                  
+             |   └── json                      (Json files with schemas)
+             |                        
+             └── tests                         (Set of test suites or test cases in robot-framework files)
+                 ├── e2e                       (End to end tests cases)
+                 ├── crud                      (Tests cases for minimal functionalities)
+                 └── commonkeywords            (Keywords that are common in several files)
             
-   4.Execution examples
+### 4. Execution examples
 
-             The Test can be runned executing the following commands:
+The Test can be runned executing the following commands:
 
-             1. robot -d reports wordpress/tests/e2e/post/test.robot  
-                 This command is used to execute the file "test.robot" from "post" endpoint and saves the output 
-                 in the "reports" directory.If the -d option is not set the output is saved in the root directory.
+1. robot -d reports wordpress/tests/e2e/post/test.robot  
 
-             2. robot -d reports wordpress/tests/  
-                 This command is used to execute all the test suit in the project and save the reports in reports 
-                 directory.
+    This command is used to execute the file "test.robot" from "post" endpoint and saves the output 
+    in the "reports" directory.If the -d option is not set the output is saved in the root directory.
 
-             3. robot -d reports  --loglevel TRACE wordpress/tests/e2e/post/test.robot 
-                 This command can be used to execute the file "test.robot", saves the output in results directory 
-                 and --loglevel TRACE is used for the details level in the output reports, TRACE indicates to 
-                 generate a very verbouse logs report.
+2. robot -d reports wordpress/tests/  
 
-             4. robot -d reports -i Smoke wordpress/tests/e2e/posts
-                 This command is used to execute suite from the "posts" endpoint and saves the output in the 
-                 "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
-                 tag defined.
+    This command is used to execute all the test suit in the project and save the reports in reports 
+    directory.
+
+3. robot -d reports  --loglevel TRACE wordpress/tests/e2e/post/test.robot 
+
+    This command can be used to execute the file "test.robot", saves the output in results directory 
+    and --loglevel TRACE is used for the details level in the output reports, TRACE indicates to 
+    generate a very verbose logs report.
+
+4. robot -d reports -i Smoke wordpress/tests/e2e/posts
+
+    This command is used to execute suite from the "posts" endpoint and saves the output in the 
+    "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
+    tag defined.
           
 
-  5.Required python libraries
-
-    requirements.txt content:
-    
-    assertpy==1.1
-    attrs==23.1.0
-    certifi==2022.12.7
-    charset-normalizer==3.1.0
-    colorama==0.4.6
-    decorator==5.1.1
-    exceptiongroup==1.1.1
-    Faker==18.4.0
-    idna==3.4
-    importlib-resources==5.12.0
-    iniconfig==2.0.0
-    jsonpath-ng==1.5.3
-    jsonschema==4.17.3
-    lxml==4.9.2
-    names==0.3.0
-    packaging==23.1
-    pkgutil_resolve_name==1.3.10
-    pluggy==1.0.0
-    ply==3.11
-    pyrsistent==0.19.3
-    pytest==7.3.1
-    python-dateutil==2.8.2
-    python-dotenv==1.0.0
-    PyYAML==6.0
-    requests==2.28.2
-    robotframework==6.0.2
-    robotframework-jsonlibrary==0.5
-    six==1.16.0
-    tomli==2.0.1
-    urllib3==1.26.15
-    zipp==3.15.0
+### 5. Required python libraries
 
 
-  6.References
+| Package  | Version | 
+|----------|---------|
+| assertpy |1.1|
+| attrs    |23.1.0|
+|certifi              |2022.12.7|
+|charset-normalizer   |3.1.0|
+|decorator            |5.1.1|
+|Faker                |18.4.0|
+|idna                 |3.4|
+|importlib-resources  |5.12.0|
+|jsonpath-ng          |1.5.3|
+|jsonschema           |4.17.3|
+|lxml                 |4.9.2|
+|names                |0.3.0|
+|pip                  |23.1|
+|pkgutil_resolve_name |1.3.10|
+|ply                  |3.11|
+|pyrsistent           |0.19.3|
+|python-dateutil      |2.8.2|
+|python-dotenv        |1.0.0|
+|PyYAML               |6.0|
+|requests             |2.28.2|
+|robotframework       |6.0.2|
+|setuptools           |49.2.1|
+|six                  |1.16.0|
+|urllib3              |1.26.15|
+|zipp                 |3.15.0|
 
-    https://github.com/robotframework/HowToWriteGoodTestCases/blob/master/HowToWriteGoodTestCases.rst
-    https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
+
+### 6. References
+https://github.com/robotframework/HowToWriteGoodTestCases/blob/master/HowToWriteGoodTestCases.rst
+
+https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
