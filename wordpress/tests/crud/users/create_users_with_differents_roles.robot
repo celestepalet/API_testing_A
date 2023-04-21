@@ -11,7 +11,6 @@ Verify That New User Can Be Created Whit The Administrator Role
     Create New Administrator User
     Verify That New User Was Crated
 
-
 Verify That New User Can Be Created Whit The Editor Role
     Create New Editor User
     Verify That New User Was Crated

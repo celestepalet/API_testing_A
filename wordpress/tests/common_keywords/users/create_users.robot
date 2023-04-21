@@ -15,6 +15,7 @@ Create New Administrator User
     ${id_user}  get_dictionary_value   id   ${expected_result}
     validate_response_status   ${response}   exp_status=201
     Set Test Variable  ${expected_result}
+    Log  ${id_user}
     Set Test Variable  ${id_user}
 
 Create New Editor User
@@ -25,6 +26,7 @@ Create New Editor User
     ${id_user}  get_dictionary_value   id   ${expected_result}
     validate_response_status   ${response}   exp_status=201
     Set Test Variable  ${expected_result}
+    Log  ${id_user}
     Set Test Variable  ${id_user}
 
 Create New Contributor User

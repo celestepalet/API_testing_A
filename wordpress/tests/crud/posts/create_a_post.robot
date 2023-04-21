@@ -8,4 +8,3 @@ ${endpoint}    posts
 *** Test Cases ***
 Create a post
     Create a post    201
- 
