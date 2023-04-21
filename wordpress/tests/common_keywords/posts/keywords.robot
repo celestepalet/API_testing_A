@@ -6,6 +6,7 @@ ${endpoint}    posts
 
 *** Keywords ***
 Create A Post In Wordpress And Verify Status Code 201
+
     [Arguments]
     ${auth}    Get Credentials
     ${body}    Create Dictionary    title=new post title3    status=publish
@@ -111,4 +112,3 @@ Update A Post With Any Character
     ${body_name}    generate_random_string
     ${body}    Create Dictionary    title=${body_name}
     Update A Post    ${post_id}    ${body}
-
