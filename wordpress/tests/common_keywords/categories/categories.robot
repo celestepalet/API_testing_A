@@ -19,6 +19,17 @@ Create A Category
     ${id_category}    get_dictionary_value    id    ${response_with_format}
     [Return]    ${id_category}
 
+Create A Category With A Parent
+    [Arguments]   ${name}    ${description}    ${parent}
+    ${auth}=    Get Credentials
+    ${body}    Create Dictionary    name=${name}    description=${description}    parent=${parent}
+    ${response}   make_request_post    ${endpoint}   body=${body}   auth=${auth}
+    validate_response_status  ${response}   exp_status=201
+    ${response_with_format}   get_format_response  ${response}
+    Log    ${response_with_format}
+    ${id_category}    get_dictionary_value    id    ${response_with_format}
+    [Return]    ${id_category}
+
 Get All Categories
     ${auth}=    Get Credentials
     ${response}   make_request_get  ${endpoint}   auth=${auth}
