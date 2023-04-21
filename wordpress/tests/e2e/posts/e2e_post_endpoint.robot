@@ -69,3 +69,4 @@ Verify That The Title Can Be Edited In A Draft Post
     Create A Post And Save it on drafts
     Get The Post Id    ${post_id}
     Update The Title In A Post    ${post_id}
+    
