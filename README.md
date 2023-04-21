@@ -21,9 +21,10 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
                                 1. Install Docker and docker compose 
                                 2. Download the docker-compose in https://github.com/celestepalet/Run-Wordpress-Locally
                                 3. In a bash terminal run $ docker compose up -d
-                                4. Go to http://localhost:80/ and follow the instructions for finish the installation
-                                5. Install in WordPress the plugin "WordPress REST API Authentication"
-                                6. Activate the plugin
+                                4. Go to http://localhost:80/ 
+                                5. Set English Language and follow the instructions for finish the installation
+                                6. Install in WordPress the plugin "WordPress REST API Authentication"
+                                7. Activate the plugin
 
         2. Install Python 3.8
         3. Clone the repository

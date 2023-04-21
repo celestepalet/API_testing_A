@@ -7,19 +7,18 @@ Resource     get_users.robot
 ${endpoint}     users
 
 *** Keywords ***
-Modify User Name By ID
-    [Arguments]  ${id_user}
-    ${auth}   get_basic_auth
-    ${body}   Create Dictionary   name=modify username
-    ${response}   make_request_put  ${endpoint}   body=${body}   id=${id_user}   auth=${auth}
-    validate_response_status   ${response}
-    ${expected_result}   get_format_response  ${response}
+Modify User
+    [Arguments]  ${id_user}   ${body}
+    ${expected_result}   get_request_response   put   ${endpoint}   body=${body}   id=${id_user}
     Set Test Variable  ${expected_result}
+    [Return]   ${expected_result}
 
-Verify The Contact Has Been Modified
-    ${auth}   get_basic_auth
-    ${response}   make_request_get   ${endpoint}   auth=${auth}    id=${id_user}
-    validate_response_status    ${response}
-    ${actual_result}   get_format_response   ${response}
+Verify The User Has Been Modified
+    ${actual_result}   get_request_response   get   ${endpoint}   id=${id_user}
     ${ignore}    Create List    username   first_name   last_name   email   locale    nickname   roles   registered_date   capabilities   extra_capabilities   meta
     verify_actual_equal_expected   ${actual_result}   ${expected_result}   ${ignore}
+
+Modify User Name By ID
+    [Arguments]  ${id_user}
+    ${body}   Create Dictionary   name=modify username
+    Modify User   ${id_user}   ${body}
