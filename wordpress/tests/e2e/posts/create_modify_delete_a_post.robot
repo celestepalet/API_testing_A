@@ -7,7 +7,6 @@ ${endpoint}     posts
 
 *** Test Cases ***
 Verify that a post was deleted successfully
-    Get credentials
     Post a post   201
     Get post id   200
     Update post title   200   ${id_post}
@@ -16,6 +15,7 @@ Verify that a post was deleted successfully
 *** Keywords ***
 Post a post
     [Arguments]   ${exp_status}
+    ${auth}    Get Credentials
     ${body}    Create dictionary    title=new post title 1   status=publish
     ${response}   Make request post    ${endpoint}   body=${body}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
@@ -24,6 +24,7 @@ Post a post
 
 Get post id
     [Arguments]   ${exp_status}
+    ${auth}    Get Credentials
     ${response}   Make request get  ${endpoint}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
     ${response_with_format}   Get format response   ${response}   format_json
@@ -33,6 +34,7 @@ Get post id
 
 Update post title
     [Arguments]   ${exp_status}   ${id_post}
+    ${auth}    Get Credentials
     ${body}    Create dictionary    title=change test title   content=
     ${response}   Make request put    ${endpoint}   body=${body}   id=${id_post}   auth=${auth}
     Validate response status  ${response}   exp_status=${exp_status}
@@ -41,8 +43,8 @@ Update post title
 
 Move post to trash
     [Arguments]    ${exp_status}    ${id_post}
+    ${auth}    Get Credentials
     ${response}    Make request delete    ${endpoint}    id=${id_post}    auth=${auth}
     Validate response status    ${response}    exp_status=${exp_status}
     ${response_with_format}    Get format response    ${response}    format_json
     Log   ${response_with_format}
-

@@ -38,9 +38,22 @@ For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 
 
 ### 2. Initial Configuration
 
-1. Set Environment:
 
-    Configure the environment in IDE, setting the follow environment variables.
+2.1. Set Environment:
+
+For run this project will be necessary install WordPress 6.2, Mysql 5.7, Python 3.8, pip 23.0.1 and all the requirements in requirements.txt
+        
+1.Install WordPress locally and its DB:
+  - Install Docker and docker compose 
+  - Download the docker-compose in https://github.com/celestepalet/Run-Wordpress-Locally
+  - In a bash terminal run $ docker compose up -d
+  - Go to http://localhost:80/ 
+  - Set English Language and follow the instructions for finish the installation
+  - Install in WordPress the plugin "WordPress REST API Authentication"
+  - Activate the plugin
+
+
+Configure the environment in IDE, setting the follow environment variables.
 
 Environment variables used:
 
@@ -53,19 +66,19 @@ Environment variables used:
 
 For pycharm:
 
-- Install EnvFile
-- Restart IDE
-- Edit Run Configuration
-- Add new python run configuration
-- In "Configuration" tab select: 
-  - In "Module name" write robot
-  - In "Parameters" write -d results wordpress/tests
-  - In "Working directory" add the project path
-- In "EnvFile" tab select "Enable EnvFile" and add the .env file of the project
+  - Install EnvFile plugin
+  - Restart IDE
+  - Edit Run Configuration
+  - Add new python run configuration
+  - In "Configuration" tab select: 
+    - In "Module name" write robot
+    - In "Parameters" write -d results wordpress/tests
+    - In "Working directory" add the project path
+  - In "EnvFile" tab select "Enable EnvFile" and add the .env file of the project
         
-2. Set PYTHONPATH:
+2.2. Set PYTHONPATH:
 
-     In bash terminal run the command: PYTHONPATH=$PWD
+In bash terminal run the command: PYTHONPATH=$PWD
 
 
 ### 3. Framework Structure
@@ -99,26 +112,31 @@ For pycharm:
 
 The Test can be runned executing the following commands:
 
-             1. robot -d reports wordpress/tests/e2e/post/test.robot  
-                 This command is used to execute the file "test.robot" from "post" endpoint and saves the output 
-                 in the "reports" directory.If the -d option is not set the output is saved in the root directory.
+1. robot -d reports wordpress/tests/e2e/post/test.robot  
 
-             2. robot -d reports wordpress/tests/  
-                 This command is used to execute all the test suit in the project and save the reports in reports 
-                 directory.
+    This command is used to execute the file "test.robot" from "post" endpoint and saves the output 
+    in the "reports" directory.If the -d option is not set the output is saved in the root directory.
 
-             3. robot -d reports  --loglevel TRACE wordpress/tests/e2e/post/test.robot 
-                 This command can be used to execute the file "test.robot", saves the output in results directory 
-                 and --loglevel TRACE is used for the details level in the output reports, TRACE indicates to 
-                 generate a very verbouse logs report.
+2. robot -d reports wordpress/tests/  
 
-             4. robot -d reports -i Smoke wordpress/tests/e2e/posts
-                 This command is used to execute suite from the "posts" endpoint and saves the output in the 
-                 "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
-                 tag defined.
+    This command is used to execute all the test suit in the project and save the reports in reports 
+    directory.
+
+3. robot -d reports  --loglevel TRACE wordpress/tests/e2e/post/test.robot 
+
+    This command can be used to execute the file "test.robot", saves the output in results directory 
+    and --loglevel TRACE is used for the details level in the output reports, TRACE indicates to 
+    generate a very verbose logs report.
+
+4. robot -d reports -i Smoke wordpress/tests/e2e/posts
+
+    This command is used to execute suite from the "posts" endpoint and saves the output in the 
+    "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
+    tag defined.
           
 
 ### 5. Required python libraries
+
 
 | Package  | Version | 
 |----------|---------|

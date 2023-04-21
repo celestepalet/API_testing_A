@@ -10,3 +10,4 @@ Verify that a specific user record can be uploaded
     ${id_user}=  Get ID From New User    role=administrator
     ${expected_result}=   Modify User Name By ID   ${id_user}
     Verify The User Has Been Modified   ${expected_result}
+
