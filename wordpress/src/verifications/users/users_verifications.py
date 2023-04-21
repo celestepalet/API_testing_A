@@ -34,7 +34,3 @@ class UsersVerification:
         logger.info(f'Actual result: {actual}')
         assert_that(actual).does_not_contain_value(old)
         assert_that(actual).contains_value(actual_value)
-
-
-
-

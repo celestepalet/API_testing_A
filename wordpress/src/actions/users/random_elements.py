@@ -1,4 +1,5 @@
 import random
+import string
 import names
 from faker import Faker
 
@@ -21,3 +22,9 @@ class RandomElements:
         fake = Faker()
         email = fake.email()
         return email
+
+    def random_password(self):
+        characters = string.ascii_letters + string.digits
+        length = random.randint(10, 15)
+        password = ''.join(random.choice(characters) for i in range(length))
+        return password

@@ -28,20 +28,20 @@ Verify That Invalid Endpoint Returns Error Message
 
 *** Keywords ***
 Create User Without Username
-    ${body}    Create Dictionary   email=${email}   password=${password}
-    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
+    ${body}=    Create Dictionary   email=${email}   password=${password}
+    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Create User Without Email
-    ${body}    Create Dictionary   username=username   password=${password}
-    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
+    ${body}=    Create Dictionary   username=username   password=${password}
+    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Create User Without Password
-    ${body}    Create Dictionary   username=username   email=${email}
-    ${actual_result}   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
+    ${body}=    Create Dictionary   username=username   email=${email}
+    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
     Set Test Variable  ${actual_result}
 
 Verify Response Message
-    [Arguments]  ${expected_result}
+    [Arguments]  ${expected_result}=
     verify_actual_equal_expected   ${actual_result}  ${expected_result}

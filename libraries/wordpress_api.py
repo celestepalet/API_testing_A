@@ -21,7 +21,3 @@ class WordPressApi:
         ValidateStatusReponse().validate_response_status(response, exp_status=exp_status)
         response = FormatResponse().get_format_response(response)
         return response
-
-
-
-

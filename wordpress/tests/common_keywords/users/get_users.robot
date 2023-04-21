@@ -25,3 +25,19 @@ Get User Data
     Set Test Variable   ${role}
     Set Test Variable   ${username}
     Set Test Variable   ${email}
+
+Select random username
+    ${username}   random_username
+    [Return]  ${username}
+
+Select random email
+    ${email}   random_email
+    [Return]  ${email}
+
+Select random password
+    ${password}   random_password
+    [Return]  ${password}
+
+Verify Response Message
+    [Arguments]   ${actual}   ${expected}
+    verify_actual_equal_expected   ${actual}  ${expected}
