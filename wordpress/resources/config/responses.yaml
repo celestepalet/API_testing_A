@@ -7,3 +7,4 @@ email_existing: {"code":"existing_user_email","message":"Sorry, that email addre
 invalid_id_message: {"code":"rest_user_invalid_id","message":"Invalid user ID.","data":{"status":404}}
 invalid_email: {"code":"rest_user_invalid_email","message":"Invalid email address.","data":{"status":400}}
 username_not_editable: {"code":"rest_user_invalid_argument","message":"Username is not editable.","data":{"status":400}}
+invalid_parent: {"code":"rest_term_invalid","message":"Parent term does not exist.","data":{"status":400}}
