@@ -20,6 +20,7 @@ Verify That New User Was Created
     [Arguments]  ${expected_result}
     ${actual_result}   get_request_response   get   ${endpoint}   id=${id_user}
     verify_actual_equal_expected   ${actual_result}   ${expected_result}   ${ignore}
+    verify_schema   ${expected_result}
 
 Create User With Email
     [Arguments]  ${email}   ${role}   ${status}=201

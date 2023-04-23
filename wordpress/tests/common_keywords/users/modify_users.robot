@@ -10,6 +10,7 @@ ${endpoint}     users
 Modify User
     [Arguments]  ${id_user}   ${body}   ${status}=200
     ${expected_result}   get_request_response   put   ${endpoint}   body=${body}   id=${id_user}   exp_status=${status}
+    verify_schema   ${expected_result}
     [Return]   ${expected_result}
 
 Verify The User Has Been Modified
