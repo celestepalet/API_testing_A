@@ -10,7 +10,6 @@ ${endpoint}     users
 Modify User
     [Arguments]  ${id_user}   ${body}   ${status}=200
     ${expected_result}   get_request_response   put   ${endpoint}   body=${body}   id=${id_user}   exp_status=${status}
-    Set Test Variable  ${expected_result}
     [Return]   ${expected_result}
 
 Verify The User Has Been Modified
@@ -22,5 +21,5 @@ Verify The User Has Been Modified
 Modify User Name By ID
     [Arguments]  ${id_user}
     ${body}   Create Dictionary   name=modify username
-    Modify User   ${id_user}   ${body}
+    ${expected_result}=   Modify User   ${id_user}   ${body}
     [Return]   ${expected_result}

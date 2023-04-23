@@ -1,6 +1,8 @@
 *** Settings ***
 Library      wordpress.src.common_imports.CommonLibraries
 Library      wordpress.src.verifications.users.users_verifications.UsersVerification
+Library      wordpress.src.actions.users.random_elements.RandomElements
+Resource     get_users.robot
 Variables    ../../../resources/config/responses.yaml
 
 *** Variables ***
@@ -20,31 +22,24 @@ Verify That New User Was Created
     ${ignore}    Create List    username   first_name   last_name   email   locale    nickname   roles   registered_date   capabilities   extra_capabilities   meta
     verify_actual_equal_expected   ${actual_result}   ${expected_result}   ${ignore}
 
-Get ID From User
-    [Arguments]  ${response}
-    ${id_user}   get_dictionary_value  id   ${response}
-    Set test Variable   ${id_user}
-
-Set Password Username And Email For Users Creation
-    ${password}=  Select Random Password
-    ${email}=   Select Random Email
-    ${username}=   Select Random Username
-    Set Test Variable   ${password}
-    Set Test Variable   ${email}
-    Set Test Variable   ${username}
-
-Get ID From New User
-    [Arguments]   ${role}
-    Set Password Username And Email For Users Creation
-    ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
-    ${response}=   Create New User   ${body}
-    Verify That New User Was Created  ${response}
-    [Return]   ${id_user}
-
 Create User With Email
     [Arguments]  ${email}   ${role}   ${status}=201
-    ${username}=  Select Random Username
+    Log  ${email}
+    ${username}=  random_username
     ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
     ${response}=   Create New User   ${body}   ${status}
     Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${response}
     [Return]  ${response}
+
+Create User With Username
+    [Arguments]  ${username}   ${role}   ${status}=201
+    Log  ${username}
+    ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
+    ${response}=   Create New User   ${body}   ${status}
+    Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${response}
+    [Return]  ${response}
+
+Create User Without A Element
+    [Arguments]   ${body}  ${status}=201
+    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=${status}
+    [Return]   ${actual_result}
