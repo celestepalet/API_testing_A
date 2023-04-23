@@ -19,7 +19,6 @@ Create New User
 Verify That New User Was Created
     [Arguments]  ${expected_result}
     ${actual_result}   get_request_response   get   ${endpoint}   id=${id_user}
-    ${ignore}    Create List    username   first_name   last_name   email   locale    nickname   roles   registered_date   capabilities   extra_capabilities   meta
     verify_actual_equal_expected   ${actual_result}   ${expected_result}   ${ignore}
 
 Create User With Email

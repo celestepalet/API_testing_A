@@ -19,3 +19,4 @@ invalid_parameter_email: 'Invalid parameter(s): email'
 no_reassign_user: 'Missing parameter(s): reassign'
 username_invalid_characters: 'username*+'
 invalid_parameter_username: 'Invalid parameter(s): username'
+ignore: ['username', 'first_name', 'last_name', 'email', 'locale', 'nickname', 'roles', 'registered_date', 'capabilities', 'extra_capabilities', 'meta']
