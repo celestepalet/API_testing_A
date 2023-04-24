@@ -146,6 +146,10 @@ Verify Comment Has String
     [Arguments]    ${comment}    ${string}
     validate_string    ${comment['content']['rendered']}    ${string}
 
+Verify Comment Does Not Have String
+    [Arguments]    ${comment}    ${string}
+    validate_string_not    ${comment['content']['rendered']}    ${string}
+
 Create A Post For A Comment
     ${auth}=       Get Credentials
     ${body}        Create Dictionary    title=Post to test comments    status=publish

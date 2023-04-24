@@ -7,11 +7,12 @@ Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
 
 *** Test Cases ***
-Verify search string filter returns appropiate comments
+Verify search string filter returns match comments
     Generate Random Comments On Post    ${post_id}
     @{response}=    Get Comments With Filter Search    tiger
     FOR    ${element}    IN    @{response}
         Verify Comment Has String    ${element}    tiger
+        Verify Comment Does Not Have String    ${element}    fox
     END
 
 Verify parent filter functionality returns appropiate comments
