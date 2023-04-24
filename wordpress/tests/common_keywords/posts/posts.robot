@@ -61,19 +61,19 @@ Create A Post
 Create A Post And Save it on drafts
     ${title}    generate_random_title
     ${content}    generate_random_content
-    ${body}    Create Dictionary    title=${title}    status=draft    content=${content}
+    ${body}    Create Dictionary    title=${title}    status=draft    content=${content}    comment_status=open
     Create A Post    ${body} 
 
 Create A Published Post
     ${title}    generate_random_title
     ${content}    generate_random_content
-    ${body}    Create Dictionary    title=${title}    status=publish    content=${content}
+    ${body}    Create Dictionary    title=${title}    status=publish    content=${content}    comment_status=open
     Create A Post    ${body} 
 
 Create A Private Post
     ${title}    generate_random_title
     ${content}    generate_random_content
-    ${body}    Create Dictionary    title=${title}    status=private    content=${content}
+    ${body}    Create Dictionary    title=${title}    status=private    content=${content}    comment_status=open
     Create A Post    ${body} 
 
 Get The Post Id
@@ -132,16 +132,47 @@ Update The Title In A Post
     ${body}    Create Dictionary    title=${title}
     Update A Post    ${post_id}    ${body}
 
-Update A Post With 5000 Characters
+Update The Date In A Post
     [Arguments]    ${post_id}
-    ${chars}    generate_random_chars
-    ${body}    Create Dictionary    title=${chars}
+    ${date}    generate_random_date
+    ${body}    Create Dictionary    date=${date}
     Update A Post    ${post_id}    ${body}
 
-Delete a post
-    [Arguments]    ${exp_status}    ${id_post}
+Change The Author of a Post
+    [Arguments]    ${post_id}
+    ${body}    Create Dictionary    author=2
+    Update A Post    ${post_id}    ${body}
+
+Disable The Comments In A Post 
+    [Arguments]    ${post_id}
+    ${body}    Create Dictionary    comment_status=closed
+    Update A Post    ${post_id}    ${body}
+
+Disable The Ping In A Post 
+    [Arguments]    ${post_id}
+    ${body}    Create Dictionary    ping_status=closed
+    Update A Post    ${post_id}    ${body}
+
+Update A Post With 65600 Characters
+    [Arguments]    ${post_id}
+    ${auth}    Get Credentials
+    ${chars}    generate_random_chars
+    ${body}    Create Dictionary    title=${chars}
+    ${response_update}    make_request_put    ${endpoint}    body=${body}    id=${post_id}    auth=${auth}
+    validate_response_status    ${response_update}    exp_status=500
+
+Create A Post Without Title And Content
+    [Arguments]
+    ${auth}    Get Credentials
+    ${content}    generate_random_content
+    ${body}    Create Dictionary    title=${None}
+    ${response}    make_request_post    ${endpoint}    body=${body}    auth=${auth}
+    validate_response_status    ${response}    exp_status=400
+
+Move Post To Trash
+    [Arguments]    ${post_id}
     ${auth}    Get credentials
-    ${response}    Make request delete    ${endpoint}    ${id_post}    auth=${auth}
-    Validate response status    ${response}    exp_status=${exp_status}
+    ${response}    Make request delete    ${endpoint}    ${post_id}    auth=${auth}
+    Validate response status    ${response}
     ${response_with_format}    Get format response    ${response}    format_json
     Log    ${response_with_format} 
