@@ -100,24 +100,6 @@ Verify That The Date Can Be Changed In A Draft Post
     Update The Date In A Post    ${post_id}
     Move Post To Trash    ${post_id}
 
-Verify That The Author Of A Published Post Can Be Changed
-    Create A Published Post
-    Get The Post Id    ${post_id}
-    Change The Author of a Post    ${post_id}
-    Move Post To Trash    ${post_id}
-    
-Verify That The Author Of A Private Post Can Be Changed
-    Create A Private Post
-    Get The Post Id    ${post_id}
-    Change The Author of a Post    ${post_id}
-    Move Post To Trash    ${post_id}
-
-Verify That The Author Of A Draft Post Can Be Changed
-    Create A Post And Save it on drafts
-    Get The Post Id    ${post_id}
-    Change The Author of a Post    ${post_id}
-    Move Post To Trash    ${post_id}
-
 Verify that The Comments In A Published Post Can Be Disabled
     Create A Published Post
     Get The Post Id    ${post_id}

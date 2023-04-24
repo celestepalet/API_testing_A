@@ -4,7 +4,7 @@ Documentation    Tests to verify that a comment can be created successfully
 ...              generated.
 Resource         ../../common_keywords/comments/comments.robot
 Suite Setup       Create A Post For A Comment
-Suite Teardown    Deleted Post Created For The Comment
+Suite Teardown    Delete Post Created For The Comment
 
 *** Test Cases ***
 Verify that a comment can be created edited and deleted successfully
