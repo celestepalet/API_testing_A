@@ -54,3 +54,4 @@ Verify Delete Error Info
     Log    ${expected_result}
     Log    ${bad_author_response}
     verify_actual_equal_expected   ${expected_result}   ${delete_same_page}
+    
