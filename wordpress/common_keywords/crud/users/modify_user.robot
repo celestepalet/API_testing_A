@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify that the user information can be updated
 ...            and the API return a status code 200
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../users/users_imports.robot
 
 Test Teardown  Delete New User Created
 

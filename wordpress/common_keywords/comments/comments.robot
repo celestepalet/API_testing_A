@@ -2,7 +2,7 @@
 Library      wordpress.src.common_imports.CommonLibraries
 Library      wordpress.src.verifications.users.users_verifications.UsersVerification
 Resource     ../get_credentials.robot
-Variables    ../../../resources/config/responses.yaml
+Variables    ../../resources/config/responses.yaml
 
 
 *** Variables ***
