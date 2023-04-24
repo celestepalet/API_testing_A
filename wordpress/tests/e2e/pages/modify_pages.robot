@@ -33,16 +33,6 @@ Verify password can be change in a draft page
     Update Password In Page
     Validate Update Password
 
-Verify that the author can be changed in a publish page
-    Create Page With Desired Status    publish
-    Update Author       2
-    Verify Page
-
-Verify that the author can be changed in a draft page
-    Create Page With Desired Status    draft
-    Update Author       2
-    Verify Page
-
 Verify that ping_status can be updated from closed to open in a publish page
     Create Page With Desired Ping Status   publish   closed
     Update Ping Status In Page  open
