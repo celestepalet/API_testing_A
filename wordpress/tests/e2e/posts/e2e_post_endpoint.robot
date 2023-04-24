@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    Verify scenarios in public, private and draft Post endpoints.
 Library    wordpress.src.common_imports.CommonLibraries
-Library    ../../../../venv/lib/site-packages/robot/libraries/XML.py
 Resource    ../../common_keywords/get_credentials.robot
 Resource    ../../common_keywords/posts/posts.robot
 

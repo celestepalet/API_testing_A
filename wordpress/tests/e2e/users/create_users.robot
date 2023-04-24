@@ -1,42 +1,99 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that creates more than one user
-...            whit data repeted.
+...            whit differents roels and data repeted.
 Resource       ../../common_keywords/users/users_imports.robot
 
+Test Setup  Set Password Username And Email For Users Creation
 Test Teardown  Delete New User Created
 
-*** Test Cases ***
-Verify That Can Not Be Created Two Users Whit Same Email
-    Create Firts User
-    Verify That New User Was Crated
-    Create Second User With Same Email That Firts
-    Verify Response Message    ${email_existing}
+*** Variables ***
+${id_user}  None
 
-Verify That Can Not Be Created Two Users Whit Same Username
-    Create Firts user
-    Verify That New User Was Crated
-    Create Second User With Same Username That Firts
-    Verify Response Message    ${username_existing}
+*** Test Cases ***
+Verify That When Creating A User Receives Subscriber Role By Default
+    ${response}   Create User Without Role
+    Verify Response   ${response}   element_to_verify=${default_role}
+
+Verify That Can Not Be Ceated An User Without Username, Email Or Password
+    ${response_no_username}=   Create User Without A Element   ${body_no_username}   status=400
+    Verify Response Message   ${response_no_username}   ${no_username_message}
+    ${response_no_email}=   Create User Without A Element   ${body_no_email}   status=400
+    Verify Response Message   ${response_no_email}    ${no_email_message}
+    ${response_no_password}=   Create User Without A Element   ${body_no_password}   status=400
+    Verify Response Message   ${response_no_password}    ${no_password_message}
+
+Verify That Can Not Be Created An Administrator With Special Characters In Username (except “.“, “_“ ,”@”and “-“)
+    ${message}=   Create User With Username  ${username_invalid_characters}   role=administrator   status=400
+    Verify Response Message    actual=${message}    expected=${invalid_parameter_username}
+
+Verify That Can Not Be Created Two Administrator Users With Same Email
+    Create User With Email  ${email}   role=administrator
+    ${message}=   Create User With Email  ${email}   role=administrator   status=500
+    Verify Response Message    actual=${message}    expected=${email_existing}
+
+Verify That Can Not Be Created Two Administrator Users With Same Username
+    Create User With Username  ${username}   role=administrator
+    ${message}=   Create User With Username  ${username}   role=administrator   status=500
+    Verify Response Message    actual=${message}    expected=${username_existing}
+
+Verify That Can Not Be Created An Editor User With More Than 60 Characters In Username
+    ${message}=   Create User With Username  ${username_61_characters}   role=editor   status=500
+    Verify Response Message    actual=${message}    expected=${username_to_long}
+
+Verify That Can Not Be Created Two Editor Users With Same Email
+    Create User With Email  ${email}   role=editor
+    ${message}=   Create User With Email  ${email}   role=editor  status=500
+    Verify Response Message    actual=${message}    expected=${email_existing}
+
+Verify That Can Not Be Created Two Editor Users With Same Username
+    Create User With Username  ${username}   role=editor
+    ${message}=   Create User With Username  ${username}   role=editor   status=500
+    Verify Response Message    actual=${message}    expected=${username_existing}
+
+Verify That Can Not Be Created A Subscriber User With More Than 60 Characters In Username
+    ${message}=   Create User With Username  ${username_61_characters}   role=subscriber   status=500
+    Verify Response Message    actual=${message}    expected=${username_to_long}
+
+Verify That Can Not Be Created Two Subscriber Users With Same Email
+    Create User With Email  ${email}   role=subscriber
+    ${message}=   Create User With Email  ${email}   role=subscriber  status=500
+    Verify Response Message    actual=${message}    expected=${email_existing}
+
+Verify That Can Not Be Created Two Subscriber Users With Same Username
+    Create User With Username  ${username}   role=subscriber
+    ${message}=   Create User With Username  ${username}   role=subscriber   status=500
+    Verify Response Message    actual=${message}    expected=${username_existing}
+
+Verify That Can Not Be Created An Author User With More Than 60 Characters In Username
+    ${message}=   Create User With Username  ${username_61_characters}   role=author   status=500
+    Verify Response Message    actual=${message}    expected=${username_to_long}
+
+Verify That Can Not Be Created Two Author Users With Same Email
+    Create User With Email  ${email}   role=author
+    ${message}=   Create User With Email  ${email}   role=author   status=500
+    Verify Response Message    actual=${message}    expected=${email_existing}
+
+Verify That Can Not Be Created Two Author Users With Same Username
+    Create User With Username  ${username}   role=author
+    ${message}=   Create User With Username  ${username}   role=author   status=500
+    Verify Response Message    actual=${message}    expected=${username_existing}
+
+Verify That Can Not Be Created An Contributor User With More Than 60 Characters In Username
+    ${message}=   Create User With Username  ${username_61_characters}   role=contributor   status=500
+    Verify Response Message    actual=${message}    expected=${username_to_long}
+
+Verify That Can Not Be Created Two Contributor Users With Same Email
+    Create User With Email  ${email}   role=contributor
+    ${message}=   Create User With Email  ${email}   role=contributor   status=500
+    Verify Response Message    actual=${message}    expected=${email_existing}
+
+Verify That Can Not Be Created Two Contributor Users With Same Username
+    Create User With Username  ${username}   role=contributor
+    ${message}=   Create User With Username  ${username}   role=contributor   status=500
+    Verify Response Message    actual=${message}    expected=${username_existing}
 
 *** Keywords ***
-Create Firts User
-    ${role}   random_role
-    Create New User   ${role}
-
-Create Second User With Same Email That Firts
-    ${email}   get_dictionary_value    email  ${expected_result}
-    ${role}   random_role
-    ${body}   Create Dictionary   username=other_username   email=${email}   roles=${role}   password=password
-    ${error_message}   get_request_response   post   ${endpoint}   body=${body}   exp_status=500
-    Set Test Variable  ${error_message}
-
-Create Second User With Same Username That Firts
-    ${username}   get_dictionary_value    username  ${expected_result}
-    ${role}   random_role
-    ${body}   Create Dictionary   username=${username}   email=api.at19@apitesting.com   roles=${role}   password=password
-    ${error_message}   get_request_response   post   ${endpoint}   body=${body}   exp_status=500
-    Set Test Variable  ${error_message}
-
-Verify Response Message
-    [Arguments]  ${expected_result}
-    verify_actual_equal_expected   ${error_message}  ${expected_result}
+Create User Without Role
+    ${body}=   Create Dictionary   username=${username}   email=${email}   password=${password}
+    ${response}=   Create New User    ${body}
+    [Return]  ${response}
