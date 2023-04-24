@@ -1,6 +1,7 @@
 *** Settings ***
 Library      wordpress.src.common_imports.CommonLibraries
 Library      wordpress.src.verifications.users.users_verifications.UsersVerification
+Library      wordpress.src.actions.comments.random_elements.RandomComments
 Resource     ../get_credentials.robot
 Variables    ../../../resources/config/responses.yaml
 
@@ -51,6 +52,13 @@ Create A New Comment Without Post
     ${response_with_format}   get_format_response    ${response}    format_json
     Log    ${response_with_format}
     [Return]    ${response_with_format}
+
+Generate Random Comments On Post
+    [Arguments]    ${post_id}
+    @{random_comments}=    random_animals_comments_list
+    FOR    ${element}    IN    @{random_comments}
+        Create A New Comment    ${element}    ${post_id}
+    END
 
 Get Comment With ID
     [Arguments]    ${comment_id}
@@ -133,6 +141,10 @@ Verify Comment Is Not In Results
     [Arguments]    ${comment_id}    ${response}
     ${comment}=    Get Comment With ID    ${comment_id}
     validate_content_not   ${comment}    ${response}
+
+Verify Comment Has String
+    [Arguments]    ${comment}    ${string}
+    validate_string    ${comment['content']['rendered']}    ${string}
 
 Create A Post For A Comment
     ${auth}=       Get Credentials
