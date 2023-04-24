@@ -7,14 +7,13 @@ Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
 
 *** Test Cases ***
-Verify search string filter returns appropiate comments
-    ${comment1_id}=    Create A New Comment    Comment 1: Elephant    ${post_id}
-    ${comment2_id}=    Create A New Comment    Comment 2: Giraffe    ${post_id}
-    ${comment3_id}=    Create A New Comment    Comment 3: Platypus    ${post_id}
-    ${response}    Get Comments With Filter Search    Elephant
-    Verify Comment Is In Results    ${comment1_id}    ${response}
-    Verify Comment Is Not In Results    ${comment2_id}    ${response}
-    Verify Comment Is Not In Results    ${comment3_id}    ${response}
+Verify search string filter returns match comments
+    Generate Random Comments On Post    ${post_id}
+    @{response}=    Get Comments With Filter Search    tiger
+    FOR    ${element}    IN    @{response}
+        Verify Comment Has String    ${element}    tiger
+        Verify Comment Does Not Have String    ${element}    fox
+    END
 
 Verify parent filter functionality returns appropiate comments
     ${comment1_id}=    Create A New Comment    Comment 1: This is a parent comment.    ${post_id}
