@@ -8,3 +8,6 @@ invalid_id_message: {"code":"rest_user_invalid_id","message":"Invalid user ID.",
 invalid_email: {"code":"rest_user_invalid_email","message":"Invalid email address.","data":{"status":400}}
 username_not_editable: {"code":"rest_user_invalid_argument","message":"Username is not editable.","data":{"status":400}}
 invalid_parent: {"code":"rest_term_invalid","message":"Parent term does not exist.","data":{"status":400}}
+no_content_comment: {"code": "rest_comment_content_invalid", "message": "Invalid comment content.", "data": {"status": 400}}
+no_post_comment: {"code": "rest_comment_invalid_post_id", "message": "Sorry, you are not allowed to create this comment without a post.", "data": {"status": 403}}
+delete_deleted_comment: {"code": "rest_already_trashed", "message": "The comment has already been trashed.", "data": {"status": 410}}
