@@ -1,12 +1,11 @@
-from robot.api import logger
-from assertpy import assert_that
-from jsonschema import validate
 import json
+import jsonschema
+from robot.api import logger
+from assertpy import assert_that, soft_assertions
 
 
 class PagesVerification:
     """Validates a request response"""
-
     def verify_actual_equal_expected(self, actual, expected, ignore=[]):
         """Verify that expected and actual results are equal"""
         logger.info(f'Actual result: {actual}')
@@ -34,9 +33,11 @@ class PagesVerification:
         assert_that(value).is_not_empty()
 
     def verify_schema(self, response_json):
-        """Verify that the json response has a valid schema"""
-        with open(r'wordpress/resources/json/get_page_schema.json') as f:
-            expected_schema = json.load(f)
-        assert validate(expected_schema, response_json) is None
-        logger.info(f'Json schema: {expected_schema}')
-        logger.info(f'Json response: {response_json}')
+        """Verify that a schema is the same that renponse"""
+        with soft_assertions():
+            with open(r'wordpress/resources/json/get_page_schema.json', 'r') as schema_file:
+                expected_schema = json.load(schema_file)
+            result = jsonschema.validate(response_json, expected_schema)
+            logger.info(f'The schema is: {expected_schema}')
+            logger.info(f'The response is: {response_json}')
+            assert result is None

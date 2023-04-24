@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that creates more than one user
 ...            whit differents roels and data repeted.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Setup  Set Password Username And Email For Users Creation
 Test Teardown  Delete New User Created

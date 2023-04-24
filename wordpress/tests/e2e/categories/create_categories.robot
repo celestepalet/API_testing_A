@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    Tests to verify that a category can be created successfully 
 ...              and it verifies all the created values.
-Resource         ../../common_keywords/categories/categories.robot
+Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/config/responses.yaml
 #Suite Teardown    Delete Setup Category
 

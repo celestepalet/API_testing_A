@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation    Verify scenarios in public, private and draft Post endpoints.
 Library    wordpress.src.common_imports.CommonLibraries
-Resource    ../../common_keywords/get_credentials.robot
-Resource    ../../common_keywords/posts/posts.robot
+Resource    ../../../common_keywords/get_credentials.robot
+Resource    ../../../common_keywords/posts/posts.robot
 
 *** Variables ***
 ${endpoint}     posts

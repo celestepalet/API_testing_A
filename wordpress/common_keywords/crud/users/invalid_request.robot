@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify that send invalid data to the endpoint no returns a status code
 ...            2xx and returns differents messages
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../users/users_imports.robot
 
 *** Variables ***
 ${endpoint}     users

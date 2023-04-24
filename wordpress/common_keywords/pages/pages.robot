@@ -34,6 +34,7 @@ Create Page With Desired Status
     ${expected_result}   get_format_response  ${response}
     ${id_page}  get_dictionary_value   id   ${expected_result}
     validate_response_status  ${response}   exp_status=201
+    verify_schema   ${expected_result}
     Set Test Variable  ${expected_result}
     Set Test Variable  ${id_page}
     Log  ${id_page}

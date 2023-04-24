@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../common_keywords/pages/pages.robot
+Resource    ../../pages/pages.robot
 
 *** Test Cases ***
 Verify Pages Can Be Listed

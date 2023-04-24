@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify that users with different roles can be created successfully
 ...            and the API returns a status code 201 and the user record.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../users/users_imports.robot
 
 Test Setup  Set Password Username And Email For Users Creation
 Test Teardown  Delete New User Created
