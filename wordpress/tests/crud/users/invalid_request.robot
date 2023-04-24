@@ -11,37 +11,17 @@ ${invalid_id}   1!
 
 *** Test Cases ***
 Verify That Can Not Be Created User Without Username
-    Create User Without Username
-    Verify Response Message   ${no_username_response}
+    ${response}=   Create User Without A Element   ${body_no_username}   status=400
+    Verify Response Message   ${response}   ${no_username_message}
 
 Verify That Can Not Be Created User Without Email
-    Create User Without Email
-    Verify Response Message    ${no_email_response}
+    ${response}=   Create User Without A Element   ${body_no_email}   status=400
+    Verify Response Message   ${response}    ${no_email_message}
 
 Verify That Can Not Be Created User Without Passowrd
-    Create User Without Password
-    Verify Response Message    ${no_password_response}
+    ${response}=   Create User Without A Element   ${body_no_password}   status=400
+    Verify Response Message   ${response}    ${no_password_message}
 
 Verify That Invalid Endpoint Returns Error Message
-    Get User With Invalid ID    ${invalid_id}
-    Verify Response Message    ${not_found}
-
-*** Keywords ***
-Create User Without Username
-    ${body}=    Create Dictionary   email=${email}   password=${password}
-    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
-    Set Test Variable  ${actual_result}
-
-Create User Without Email
-    ${body}=    Create Dictionary   username=username   password=${password}
-    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
-    Set Test Variable  ${actual_result}
-
-Create User Without Password
-    ${body}=    Create Dictionary   username=username   email=${email}
-    ${actual_result}=   get_request_response   post   ${endpoint}   body=${body}   exp_status=400
-    Set Test Variable  ${actual_result}
-
-Verify Response Message
-    [Arguments]  ${expected_result}=
-    verify_actual_equal_expected   ${actual_result}  ${expected_result}
+    ${response}=   Get User With Invalid ID    ${invalid_id}
+    Verify Response Message   ${response}    ${not_found}
