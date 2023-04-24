@@ -1,0 +1,412 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "username": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "registered_date": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "switch_themes": {
+          "type": "boolean"
+        },
+        "edit_themes": {
+          "type": "boolean"
+        },
+        "activate_plugins": {
+          "type": "boolean"
+        },
+        "edit_plugins": {
+          "type": "boolean"
+        },
+        "edit_users": {
+          "type": "boolean"
+        },
+        "edit_files": {
+          "type": "boolean"
+        },
+        "manage_options": {
+          "type": "boolean"
+        },
+        "moderate_comments": {
+          "type": "boolean"
+        },
+        "manage_categories": {
+          "type": "boolean"
+        },
+        "manage_links": {
+          "type": "boolean"
+        },
+        "upload_files": {
+          "type": "boolean"
+        },
+        "import": {
+          "type": "boolean"
+        },
+        "unfiltered_html": {
+          "type": "boolean"
+        },
+        "edit_posts": {
+          "type": "boolean"
+        },
+        "edit_others_posts": {
+          "type": "boolean"
+        },
+        "edit_published_posts": {
+          "type": "boolean"
+        },
+        "publish_posts": {
+          "type": "boolean"
+        },
+        "edit_pages": {
+          "type": "boolean"
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "level_10": {
+          "type": "boolean"
+        },
+        "level_9": {
+          "type": "boolean"
+        },
+        "level_8": {
+          "type": "boolean"
+        },
+        "level_7": {
+          "type": "boolean"
+        },
+        "level_6": {
+          "type": "boolean"
+        },
+        "level_5": {
+          "type": "boolean"
+        },
+        "level_4": {
+          "type": "boolean"
+        },
+        "level_3": {
+          "type": "boolean"
+        },
+        "level_2": {
+          "type": "boolean"
+        },
+        "level_1": {
+          "type": "boolean"
+        },
+        "level_0": {
+          "type": "boolean"
+        },
+        "edit_others_pages": {
+          "type": "boolean"
+        },
+        "edit_published_pages": {
+          "type": "boolean"
+        },
+        "publish_pages": {
+          "type": "boolean"
+        },
+        "delete_pages": {
+          "type": "boolean"
+        },
+        "delete_others_pages": {
+          "type": "boolean"
+        },
+        "delete_published_pages": {
+          "type": "boolean"
+        },
+        "delete_posts": {
+          "type": "boolean"
+        },
+        "delete_others_posts": {
+          "type": "boolean"
+        },
+        "delete_published_posts": {
+          "type": "boolean"
+        },
+        "delete_private_posts": {
+          "type": "boolean"
+        },
+        "edit_private_posts": {
+          "type": "boolean"
+        },
+        "read_private_posts": {
+          "type": "boolean"
+        },
+        "delete_private_pages": {
+          "type": "boolean"
+        },
+        "edit_private_pages": {
+          "type": "boolean"
+        },
+        "read_private_pages": {
+          "type": "boolean"
+        },
+        "delete_users": {
+          "type": "boolean"
+        },
+        "create_users": {
+          "type": "boolean"
+        },
+        "unfiltered_upload": {
+          "type": "boolean"
+        },
+        "edit_dashboard": {
+          "type": "boolean"
+        },
+        "update_plugins": {
+          "type": "boolean"
+        },
+        "delete_plugins": {
+          "type": "boolean"
+        },
+        "install_plugins": {
+          "type": "boolean"
+        },
+        "update_themes": {
+          "type": "boolean"
+        },
+        "install_themes": {
+          "type": "boolean"
+        },
+        "update_core": {
+          "type": "boolean"
+        },
+        "list_users": {
+          "type": "boolean"
+        },
+        "remove_users": {
+          "type": "boolean"
+        },
+        "promote_users": {
+          "type": "boolean"
+        },
+        "edit_theme_options": {
+          "type": "boolean"
+        },
+        "delete_themes": {
+          "type": "boolean"
+        },
+        "export": {
+          "type": "boolean"
+        },
+        "administrator": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "switch_themes",
+        "edit_themes",
+        "activate_plugins",
+        "edit_plugins",
+        "edit_users",
+        "edit_files",
+        "manage_options",
+        "moderate_comments",
+        "manage_categories",
+        "manage_links",
+        "upload_files",
+        "import",
+        "unfiltered_html",
+        "edit_posts",
+        "edit_others_posts",
+        "edit_published_posts",
+        "publish_posts",
+        "edit_pages",
+        "read",
+        "level_10",
+        "level_9",
+        "level_8",
+        "level_7",
+        "level_6",
+        "level_5",
+        "level_4",
+        "level_3",
+        "level_2",
+        "level_1",
+        "level_0",
+        "edit_others_pages",
+        "edit_published_pages",
+        "publish_pages",
+        "delete_pages",
+        "delete_others_pages",
+        "delete_published_pages",
+        "delete_posts",
+        "delete_others_posts",
+        "delete_published_posts",
+        "delete_private_posts",
+        "edit_private_posts",
+        "read_private_posts",
+        "delete_private_pages",
+        "edit_private_pages",
+        "read_private_pages",
+        "delete_users",
+        "create_users",
+        "unfiltered_upload",
+        "edit_dashboard",
+        "update_plugins",
+        "delete_plugins",
+        "install_plugins",
+        "update_themes",
+        "install_themes",
+        "update_core",
+        "list_users",
+        "remove_users",
+        "promote_users",
+        "edit_theme_options",
+        "delete_themes",
+        "export",
+        "administrator"
+      ]
+    },
+    "extra_capabilities": {
+      "type": "object",
+      "properties": {
+        "administrator": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "administrator"
+      ]
+    },
+    "avatar_urls": {
+      "type": "object",
+      "properties": {
+        "24": {
+          "type": "string"
+        },
+        "48": {
+          "type": "string"
+        },
+        "96": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "24",
+        "48",
+        "96"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "persisted_preferences": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "persisted_preferences"
+      ]
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "collection": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "self",
+        "collection"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "username",
+    "name",
+    "first_name",
+    "last_name",
+    "email",
+    "url",
+    "description",
+    "link",
+    "locale",
+    "nickname",
+    "slug",
+    "roles",
+    "registered_date",
+    "capabilities",
+    "extra_capabilities",
+    "avatar_urls",
+    "meta",
+    "_links"
+  ]
+}

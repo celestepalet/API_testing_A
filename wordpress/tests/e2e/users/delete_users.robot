@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that deleted users
 ...            whit differents roels and data.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Setup  Set Password Username And Email For Users Creation
 

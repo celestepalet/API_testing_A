@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    Tests to verify that the comments endpoint responses to  
 ...              inappropiate requests are adequate.
-Resource         ../../common_keywords/comments/comments.robot
+Resource         ../../../common_keywords/comments/comments.robot
 Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
 

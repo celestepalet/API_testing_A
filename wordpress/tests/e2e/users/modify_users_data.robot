@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that creates more than one user
 ...            whit data repeted.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Teardown  Delete New User Created
 
@@ -13,9 +13,9 @@ Verify That Can Not Be Changed The Username Of An Administrator After Create It
 
 Verify That Can Be Changed The Email Of An Administrator User After Create It
     ${id_user}=   Get ID From New User   role=administrator
-    ${email}    Get Different Email
-    ${response}=   Modify User With A Different Email  ${email}    ${id_user}
-    Verify Response   ${response}    element_to_verify=${email}
+    ${email}=    Get Different Email
+    ${expected_result}=   Modify User With A Different Email  ${email}    ${id_user}
+    Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of An Administrator User After Create It If The Email Bellow To Other User
     ${email_in_use}=   Get Email In Use
@@ -35,9 +35,9 @@ Verify That Can Not Be Changed The Username Of An Editor After Create It
 
 Verify That Can Be Changed The Email Of An Editor User After Create It
     ${id_user}=   Get ID From New User   role=editor
-    ${email}    Get Different Email
-    ${response}=   Modify User With A Different Email  ${email}    ${id_user}
-    Verify Response   ${response}    element_to_verify=${email}
+    ${email}=    Get Different Email
+    ${expected_result}=   Modify User With A Different Email  ${email}    ${id_user}
+    Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of An Editor User After Create It If The Email Bellow To Other User
     ${email_in_use}=   Get Email In Use
@@ -57,9 +57,9 @@ Verify That Can Not Be Changed The Username Of A Subscriber After Create It
 
 Verify That Can Be Changed The Email Of A Subscriber User After Create It
     ${id_user}=   Get ID From New User   role=subscriber
-    ${email}    Get Different Email
-    ${response}=   Modify User With A Different Email  ${email}    ${id_user}
-    Verify Response   ${response}    element_to_verify=${email}
+    ${email}=    Get Different Email
+    ${expected_result}=   Modify User With A Different Email  ${email}    ${id_user}
+    Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of A Subscriber User After Create It If The Email Bellow To Other User
     ${email_in_use}=   Get Email In Use
@@ -79,9 +79,9 @@ Verify That Can Not Be Changed The Username Of An Author After Create It
 
 Verify That Can Be Changed The Email Of An Author User After Create It
     ${id_user}=   Get ID From New User   role=author
-    ${email}    Get Different Email
-    ${response}=   Modify User With A Different Email  ${email}    ${id_user}
-    Verify Response   ${response}    element_to_verify=${email}
+    ${email}=    Get Different Email
+    ${expected_result}=   Modify User With A Different Email  ${email}    ${id_user}
+    Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of An Author User After Create It If The Email Bellow To Other User
     ${email_in_use}=   Get Email In Use
@@ -101,9 +101,9 @@ Verify That Can Not Be Changed The Username Of A Contributor After Create It
 
 Verify That Can Be Changed The Email Of A Contributor User After Create It
     ${id_user}=   Get ID From New User   role=contributor
-    ${email}    Get Different Email
-    ${response}=   Modify User With A Different Email  ${email}    ${id_user}
-    Verify Response   ${response}    element_to_verify=${email}
+    ${email}=    Get Different Email
+    ${expected_result}=   Modify User With A Different Email  ${email}    ${id_user}
+    Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of A Contributor User After Create It If The Email Bellow To Other User
     ${email_in_use}=   Get Email In Use

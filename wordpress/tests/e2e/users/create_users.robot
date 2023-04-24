@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that creates more than one user
 ...            whit differents roels and data repeted.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Setup  Set Password Username And Email For Users Creation
 Test Teardown  Delete New User Created
@@ -11,8 +11,8 @@ ${id_user}  None
 
 *** Test Cases ***
 Verify That When Creating A User Receives Subscriber Role By Default
-    ${response}   Create User Without Role
-    Verify Response   ${response}   element_to_verify=${default_role}
+    ${expected_result}   Create User Without Role
+    Verify That New User Was Created   subscriber   ${expected_result}
 
 Verify That Can Not Be Ceated An User Without Username, Email Or Password
     ${response_no_username}=   Create User Without A Element   ${body_no_username}   status=400
@@ -22,7 +22,7 @@ Verify That Can Not Be Ceated An User Without Username, Email Or Password
     ${response_no_password}=   Create User Without A Element   ${body_no_password}   status=400
     Verify Response Message   ${response_no_password}    ${no_password_message}
 
-Verify That Can Not Be Created An Administrator With Special Characters In Username (except “.“, “_“ ,”@”and “-“)
+Verify That Can Not Be Created An Administrator With Special Character "+" In Username
     ${message}=   Create User With Username  ${username_invalid_characters}   role=administrator   status=400
     Verify Response Message    actual=${message}    expected=${invalid_parameter_username}
 

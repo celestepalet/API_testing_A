@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../common_keywords/pages/pages.robot
+Resource    ../../../common_keywords/pages/pages.robot
 Test Teardown   Delete Page
 
 *** Test Cases ***
