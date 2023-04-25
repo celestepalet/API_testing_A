@@ -2,7 +2,7 @@
 Documentation    Tests to verify that a category can be modified successfully 
 ...              and it verifies all the updated values.
 Resource         ../../../common_keywords/categories/categories.robot
-Variables        ../../../resources/config/responses.yaml
+Variables        ../../../resources/data/responses.yaml
 Suite Setup       Create A Category For Setup
 Suite Teardown    Delete Setup Category
 
