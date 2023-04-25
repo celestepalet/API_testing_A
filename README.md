@@ -131,7 +131,7 @@ For run the test and open the reports in a Window PowerShell terminal use the sc
 
 3. Activate virtual environment: venv\Scripts\activate
 
-4. Run the command: & 'path_to_project_root\wordpress\resources\scripts\run_test.ps1'
+4. Run the command: & 'wordpress\resources\scripts\run_test.ps1'
 
 Also, the Test can be run by executing the following commands:
 
