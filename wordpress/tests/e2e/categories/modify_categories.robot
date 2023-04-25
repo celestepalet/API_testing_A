@@ -9,6 +9,7 @@ Suite Teardown    Delete Setup Category
 *** Test Cases ***
 Verify That The Parent Parameter Of A Category Can Be Updated With A Valid Value
     Update Category Parent    1
+    Verify Equal Response    1
 
 Verify That The Parent Parameter Of A Category Cannot Be Updated With A Non-Existent Value
     Update Invalid Category Parent    987
@@ -20,6 +21,7 @@ Verify That The Parent Parameter Of A Category Cannot Be Updated With An Empty V
 
 Verify That The Slug Parameter Of A Category Cannot Be Updated With An Empty Value
     Update Category Slug    ${EMPTY}
+    Verify Not Empty Response
 
 Verify That The Description Parameter Of A Category Can Be Updated
     Update Category Description Without Id    This is a updated description
