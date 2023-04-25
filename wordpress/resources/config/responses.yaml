@@ -7,6 +7,9 @@ email_existing: "Sorry, that email address is already used!"
 invalid_id_message: "Invalid user ID."
 invalid_email: "Invalid email address."
 username_not_editable: "Username is not editable."
+no_content_comment: {"code": "rest_comment_content_invalid", "message": "Invalid comment content.", "data": {"status": 400}}
+no_post_comment: {"code": "rest_comment_invalid_post_id", "message": "Sorry, you are not allowed to create this comment without a post.", "data": {"status": 403}}
+delete_deleted_comment: {"code": "rest_already_trashed", "message": "The comment has already been trashed.", "data": {"status": 410}}
 body_no_username: {"password":"password","email":"email@at19.com"}
 body_no_password: {"username":"username","email":"email@at19.com"}
 body_no_email: {"username":"username","password":"password"}
@@ -16,7 +19,7 @@ username_to_long: 'Username may not be longer than 60 characters.'
 email_invalid_format: 'noformatmail'
 invalid_parameter_email: 'Invalid parameter(s): email'
 no_reassign_user: 'Missing parameter(s): reassign'
-username_invalid_characters: 'username*+'
+username_invalid_characters: 'user+name'
 invalid_parameter_username: 'Invalid parameter(s): username'
 ignore: ['username', 'first_name', 'last_name', 'email', 'locale', 'nickname', 'roles', 'registered_date', 'capabilities', 'extra_capabilities', 'meta']
 invalid_parent: "Parent term does not exist."

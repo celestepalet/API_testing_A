@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    Tests to verify that a category can be deleted successfully 
 ...              and it verifies the scenarios where it should not be deleted.
-Resource         ../../common_keywords/categories/categories.robot
+Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/config/responses.yaml
 Suite Setup       Create A Category For Setup
 Suite Teardown    Delete Setup Category
