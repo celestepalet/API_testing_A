@@ -125,7 +125,7 @@ Update Category Slug
     validate_response_status  ${response}
     ${response_with_format}   get_format_response  ${response}
     Log   ${response_with_format}
-    ${actual_result}    get_dictionary_value    parent    ${response_with_format}
+    ${actual_result}    get_dictionary_value    slug    ${response_with_format}
     Set Suite Variable    ${actual_result}
 
 Update Category Description Without Id
@@ -210,4 +210,10 @@ Delete Setup Category
 Verify Response Message
     [Arguments]  ${expected_result}
     verify_actual_equal_expected    ${actual_result}  ${expected_result}
-    
+
+Verify Not Empty Response
+    Should Not Be Empty    ${actual_result}
+
+Verify Equal Response
+    [Arguments]  ${expected_result}
+    Should Be Equal As Strings    ${actual_result}    ${expected_result}
