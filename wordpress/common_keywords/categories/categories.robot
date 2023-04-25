@@ -1,6 +1,6 @@
 *** Settings ***
 Library    wordpress.src.common_imports.CommonLibraries
-Library    wordpress.src.verifications.users.users_verifications.UsersVerification
+Library    wordpress.src.verifications.categories.categories_verifications.CategoriesVerification
 Resource   ../../common_keywords/get_credentials.robot 
 
 *** Variables ***

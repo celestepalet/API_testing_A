@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../get_credentials.robot
-Library    wordpress.src.verifications.users.users_verifications.UsersVerification    
+Library    wordpress.src.verifications.posts.posts_verifications.PostsVerification
 *** Variables ***
 ${endpoint}    posts
 
