@@ -22,11 +22,11 @@ Verify Response Message
     ${actual_message}=   get_dictionary_value   message   ${actual}
     verify_actual_equal_expected   ${actual_message}  ${expected}
 
-Verify Response
+Verify User Was Update
     [Arguments]  ${expected_result}   ${element_to_verify}
     Log   ${element_to_verify}
     ${params}=   Create Dictionary   context=edit
-    ${actual_result}=   get_request_response   get   ${endpoint}    params=${params}  id=${id_user}
+    ${actual_result}=   get_request_response   get   ${endpoint}   params=${params}  id=${id_user}
     verify_actual_equal_expected   ${actual_result}   ${expected_result}
 
 Get ID From User
@@ -47,5 +47,5 @@ Get ID From New User
     Set Password Username And Email For Users Creation
     ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
     ${response}=   Create New User   ${body}
-    Verify That New User Was Created  ${response}
+    Verify That New User Was Created   ${role}   ${response}
     [Return]   ${id_user}

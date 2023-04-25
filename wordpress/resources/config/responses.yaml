@@ -19,7 +19,7 @@ username_to_long: 'Username may not be longer than 60 characters.'
 email_invalid_format: 'noformatmail'
 invalid_parameter_email: 'Invalid parameter(s): email'
 no_reassign_user: 'Missing parameter(s): reassign'
-username_invalid_characters: 'username*+'
+username_invalid_characters: 'user+name'
 invalid_parameter_username: 'Invalid parameter(s): username'
 ignore: ['username', 'first_name', 'last_name', 'email', 'locale', 'nickname', 'roles', 'registered_date', 'capabilities', 'extra_capabilities', 'meta']
 invalid_parent: "Parent term does not exist."

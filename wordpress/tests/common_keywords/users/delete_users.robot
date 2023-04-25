@@ -16,12 +16,14 @@ Delete New User Created
 Verify That User Is Not Displayed In Users List
     ${actual_result}   get_request_response   get   ${endpoint}
     verify_not_contain_value    ${actual_result}    ${id_user}
-    ${expected_result}  get_list_element   0   ${actual_result}
 
 Delete User By ID
-    [Arguments]  ${id_user}   ${status}=200
+    [Arguments]   ${id_user}   ${status}=200
     Get User For Reassign
     ${params}=   Run Keyword If   '${status}'=='200'   Create Dictionary   reassign=${id_reassign}    force=true
     ${response}=   get_request_response   delete   ${endpoint}   params=${params}   id=${id_user}   exp_status=${status}
     Set Test Variable  ${response}
-    Run Keyword If   '${status}'=='200'   verify_schema   ${response}
+    ${role}   Run Keyword If   '${status}'=='200'   get_dictionary_value  previous   ${response}
+    ${role}   Run Keyword If   '${status}'=='200'   get_dictionary_value   roles   ${role}
+    ${role}   Run Keyword If   '${status}'=='200'   get_list_element  0   ${role}
+    Run Keyword If   '${status}'=='200'   verify_delete_schema   ${role}   ${response}

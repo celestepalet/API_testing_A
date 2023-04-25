@@ -17,10 +17,10 @@ Create New User
     [Return]   ${response}
 
 Verify That New User Was Created
-    [Arguments]  ${expected_result}
+    [Arguments]  ${role}   ${expected_result}
     ${actual_result}   get_request_response   get   ${endpoint}   id=${id_user}
     verify_actual_equal_expected   ${actual_result}   ${expected_result}   ${ignore}
-    verify_schema   ${expected_result}
+    verify_create_schema   ${role}   ${expected_result}
 
 Create User With Email
     [Arguments]  ${email}   ${role}   ${status}=201
@@ -28,7 +28,7 @@ Create User With Email
     ${username}=  random_username
     ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
     ${response}=   Create New User   ${body}   ${status}
-    Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${response}
+    Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${role}   ${response}
     [Return]  ${response}
 
 Create User With Username
@@ -36,7 +36,7 @@ Create User With Username
     Log  ${username}
     ${body}=   Create Dictionary   username=${username}   email=${email}   roles=${role}  password=${password}
     ${response}=   Create New User   ${body}   ${status}
-    Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${response}
+    Run Keyword If  '${status}'=='201'  Verify That New User Was Created  ${role}   ${response}
     [Return]  ${response}
 
 Create User Without A Element

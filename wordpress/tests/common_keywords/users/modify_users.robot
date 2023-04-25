@@ -10,7 +10,9 @@ ${endpoint}     users
 Modify User
     [Arguments]  ${id_user}   ${body}   ${status}=200
     ${expected_result}   get_request_response   put   ${endpoint}   body=${body}   id=${id_user}   exp_status=${status}
-    verify_schema   ${expected_result}
+    ${role}   Run Keyword If   '${status}'=='200'   get_dictionary_value   roles   ${expected_result}
+    ${role}   Run Keyword If   '${status}'=='200'   get_list_element  0   ${role}
+    Run Keyword If   '${status}'=='200'   verify_modify_schema   ${role}   ${expected_result}
     [Return]   ${expected_result}
 
 Verify The User Has Been Modified

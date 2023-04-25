@@ -1,0 +1,158 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deleted": {
+      "type": "boolean"
+    },
+    "previous": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "registered_date": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "edit_posts": {
+              "type": "boolean"
+            },
+            "read": {
+              "type": "boolean"
+            },
+            "level_1": {
+              "type": "boolean"
+            },
+            "level_0": {
+              "type": "boolean"
+            },
+            "delete_posts": {
+              "type": "boolean"
+            },
+            "contributor": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "edit_posts",
+            "read",
+            "level_1",
+            "level_0",
+            "delete_posts",
+            "contributor"
+          ]
+        },
+        "extra_capabilities": {
+          "type": "object",
+          "properties": {
+            "contributor": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "contributor"
+          ]
+        },
+        "avatar_urls": {
+          "type": "object",
+          "properties": {
+            "24": {
+              "type": "string"
+            },
+            "48": {
+              "type": "string"
+            },
+            "96": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "24",
+            "48",
+            "96"
+          ]
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "persisted_preferences": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "persisted_preferences"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "username",
+        "name",
+        "first_name",
+        "last_name",
+        "email",
+        "url",
+        "description",
+        "link",
+        "locale",
+        "nickname",
+        "slug",
+        "roles",
+        "registered_date",
+        "capabilities",
+        "extra_capabilities",
+        "avatar_urls",
+        "meta"
+      ]
+    }
+  },
+  "required": [
+    "deleted",
+    "previous"
+  ]
+}

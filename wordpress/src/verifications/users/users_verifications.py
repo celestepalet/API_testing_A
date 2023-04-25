@@ -37,10 +37,65 @@ class UsersVerification:
         assert_that(actual).does_not_contain_value(old)
         assert_that(actual).contains_value(actual_value)
 
-    def verify_schema(self, response_json):
-        """Verify that the json response has a valid schema"""
-        with open(r'wordpress/resources/json/get_user_schema.json') as f:
-            expected_schema = json.load(f)
-        assert validate(expected_schema, response_json) == None
+    def verify_delete_schema(self, role, response_json):
+        """Verify that the json response has a valid schema when delete suer"""
+        if role == 'administrator':
+            with open(r'wordpress/resources/json/users/delete_administrator_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'contributor':
+            with open(r'wordpress/resources/json/users/delete_contributor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'author':
+            with open(r'wordpress/resources/json/users/delete_author_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'editor':
+            with open(r'wordpress/resources/json/users/delete_editor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'subscriber':
+            with open(r'wordpress/resources/json/users/delete_subscriber_schema.json') as f:
+                expected_schema = json.load(f)
+        assert validate(response_json, expected_schema) == None
+        logger.info(f'Json schema: {expected_schema}')
+        logger.info(f'Json response: {response_json}')
+
+    def verify_create_schema(self, role, response_json):
+        """Verify that the json response has a valid schema when create user"""
+        if role == 'administrator':
+            with open(r'wordpress/resources/json/users/create_administrator_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'contributor':
+            with open(r'wordpress/resources/json/users/create_contributor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'author':
+            with open(r'wordpress/resources/json/users/create_author_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'editor':
+            with open(r'wordpress/resources/json/users/create_editor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'subscriber':
+            with open(r'wordpress/resources/json/users/create_subscriber_schema.json') as f:
+                expected_schema = json.load(f)
+        assert validate(response_json, expected_schema) == None
+        logger.info(f'Json schema: {expected_schema}')
+        logger.info(f'Json response: {response_json}')
+
+    def verify_modify_schema(self, role, response_json):
+        """Verify that the json response has a valid schema when modify user data"""
+        if role == 'administrator':
+            with open(r'wordpress/resources/json/users/create_administrator_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'contributor':
+            with open(r'wordpress/resources/json/users/create_contributor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'author':
+            with open(r'wordpress/resources/json/users/create_author_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'editor':
+            with open(r'wordpress/resources/json/users/create_editor_schema.json') as f:
+                expected_schema = json.load(f)
+        if role == 'subscriber':
+            with open(r'wordpress/resources/json/users/create_subscriber_schema.json') as f:
+                expected_schema = json.load(f)
+        assert validate(response_json, expected_schema) == None
         logger.info(f'Json schema: {expected_schema}')
         logger.info(f'Json response: {response_json}')
