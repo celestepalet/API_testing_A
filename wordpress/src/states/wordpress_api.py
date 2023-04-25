@@ -1,7 +1,7 @@
 from libraries.authentication import Authentication
 from libraries.make_request import MakeRequest
 from libraries.format_response import FormatResponse
-from libraries.validate_status_reponse import ValidateStatusReponse
+from libraries.validate_status_response import ValidateStatusResponse
 
 
 class WordPressApi:
@@ -18,6 +18,6 @@ class WordPressApi:
             response = MakeRequest().make_request_post(endpoint, body=body, id=id, auth=auth)
         if method == 'delete':
             response = MakeRequest().make_request_delete(endpoint, body=body, id=id, auth=auth, params=params)
-        ValidateStatusReponse().validate_response_status(response, exp_status=exp_status)
+        ValidateStatusResponse().validate_response_status(response, exp_status=exp_status)
         response = FormatResponse().get_format_response(response)
         return response

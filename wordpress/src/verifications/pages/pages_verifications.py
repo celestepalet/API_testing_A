@@ -33,7 +33,7 @@ class PagesVerification:
         assert_that(value).is_not_empty()
 
     def verify_schema(self, response_json):
-        """Verify that a schema is the same that renponse"""
+        """Verify that a schema is the same that response"""
         with soft_assertions():
             with open(r'wordpress/resources/json/get_page_schema.json', 'r') as schema_file:
                 expected_schema = json.load(schema_file)

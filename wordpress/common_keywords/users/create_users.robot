@@ -3,7 +3,7 @@ Library      wordpress.src.common_imports.CommonLibraries
 Library      wordpress.src.verifications.users.users_verifications.UsersVerification
 Library      wordpress.src.actions.users.random_elements.RandomElements
 Resource     get_users.robot
-Variables    ../../resources/config/responses.yaml
+Variables    ../../resources/data/responses.yaml
 
 *** Variables ***
 ${endpoint}     users

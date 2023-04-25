@@ -2,8 +2,7 @@
 Documentation    Tests to verify that a category can be created successfully 
 ...              and it verifies all the created values.
 Resource         ../../../common_keywords/categories/categories.robot
-Variables        ../../../resources/config/responses.yaml
-#Suite Teardown    Delete Setup Category
+Variables        ../../../resources/data/responses.yaml
 
 *** Test Cases ***
 Verify That The Name Parameter Of A Category Cannot Be Created With An Empty Value

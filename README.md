@@ -12,8 +12,7 @@ This is a Hybrid Framework for test the main functionalities of WordPress REST A
     2.2. Set PYTHONPATH
 3. Framework Structure
 4. Execution
-5. Required python libraries
-6. References
+5. References
 
 ------------------------
 ### 1. Getting started
@@ -85,32 +84,56 @@ In bash terminal run the command: PYTHONPATH=$PWD
 
          /
          ├── libraries                         (Custom Python libraries)
-         │   ├── authentication                (Method for get API authentication)
-         │   ├── format_response               (Gives format to request response)
-         │   ├── get_element                   (Gets element from iterable variable)
-         │   ├── get_url                       (Provides the basic and complete url for the request)
-         │   ├── make_request                  (Makes a request to API endpoint)
-         │   └── validation                    (Validate the status code of a response)
+         │   ├── authentication.py             (Method for get API authentication)
+         │   ├── format_response.py            (Gives format to request response)
+         │   ├── get_element.py                (Gets element from iterable variable)
+         │   ├── get_api_url.py                (Provides the url for the endpoint request)
+         │   ├── make_request.py               (Makes a request to API endpoint)
+         │   └── validate_status_response.py   (Validate the status code of a response)
          |
          ├── results                           (Save the logs and reports)
          |
-         └── wordpress                         (Robot-framework and python files specific for WordPress API)
+         └── wordpress                         (Robot-framework and python files specific for test WordPress API)
              ├── src                           (Python files personalize for each endpoint)       
-             |                  
-             ├── resources                     (Files to provide resources to the project)
-             |   ├── config                    (Files to configurate the project)
-             |   |      └── config.py          (File to provide the environment variables to the project)  
-             |   |                  
-             |   └── json                      (Json files with schemas)
+             |    ├── actions                      
+             |    ├── states                      
+             |    └── verifications
+             |
+             ├── commonkeywords                (Keywords that are common in several files)
+             |    ├── crud                     (Tests cases for minimal functionalities)
+             |    ├── categories  
+             |    ├── commnents  
+             |    ├── pages  
+             |    ├── posts  
+             |    └── users
+             |
+             ├── resources                      (Files to provide resources to the project)
+             |    ├── config                    (Files to configurate the project)
+             |    ├── data   
+             |    ├── script                 
+             |    └── json                      (Json files with request schemas)
              |                        
-             └── tests                         (Set of test suites or test cases in robot-framework files)
-                 ├── e2e                       (End to end tests cases)
-                 ├── crud                      (Tests cases for minimal functionalities)
-                 └── commonkeywords            (Keywords that are common in several files)
+             └── tests                          (Set of test suites or test cases in robot-framework files)
+                  └── e2e                       (End to end tests cases)
+                      ├── categories                      
+                      ├── comments   
+                      ├── pages 
+                      ├── posts 
+                      └── users      
             
 ### 4. Execution examples
 
-The Test can be runned executing the following commands:
+For run the test and open the reports in a Window PowerShell terminal use the script "run_test.ps1"
+   
+1. Open a PowerShell terminal
+
+2. GO to the project root folder
+
+3. Activate virtual environment: venv\Scripts\activate
+
+4. Run the command: & 'path_to_project_root\wordpress\resources\scripts\run_test.ps1'
+
+Also, the Test can be run by executing the following commands:
 
 1. robot -d reports wordpress/tests/e2e/post/test.robot  
 
@@ -133,41 +156,9 @@ The Test can be runned executing the following commands:
     This command is used to execute suite from the "posts" endpoint and saves the output in the 
     "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
     tag defined.
-          
-
-### 5. Required python libraries
 
 
-| Package  | Version | 
-|----------|---------|
-| assertpy |1.1|
-| attrs    |23.1.0|
-|certifi              |2022.12.7|
-|charset-normalizer   |3.1.0|
-|decorator            |5.1.1|
-|Faker                |18.4.0|
-|idna                 |3.4|
-|importlib-resources  |5.12.0|
-|jsonpath-ng          |1.5.3|
-|jsonschema           |4.17.3|
-|lxml                 |4.9.2|
-|names                |0.3.0|
-|pip                  |23.1|
-|pkgutil_resolve_name |1.3.10|
-|ply                  |3.11|
-|pyrsistent           |0.19.3|
-|python-dateutil      |2.8.2|
-|python-dotenv        |1.0.0|
-|PyYAML               |6.0|
-|requests             |2.28.2|
-|robotframework       |6.0.2|
-|setuptools           |49.2.1|
-|six                  |1.16.0|
-|urllib3              |1.26.15|
-|zipp                 |3.15.0|
-
-
-### 6. References
+### 5. References
 https://github.com/robotframework/HowToWriteGoodTestCases/blob/master/HowToWriteGoodTestCases.rst
 
 https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
