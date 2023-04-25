@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation  Tests to verify scenarios that creates more than one user
 ...            whit data repeted.
-Resource       ../../common_keywords/users/users_imports.robot
+Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Teardown  Delete New User Created
 

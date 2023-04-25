@@ -2,7 +2,7 @@
 Documentation    Tests to verify that a comment can be created successfully 
 ...              and it appears on the list of results when correct filters
 ...              are used.
-Resource         ../../common_keywords/comments/comments.robot
+Resource         ../../../common_keywords/comments/comments.robot
 Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
 

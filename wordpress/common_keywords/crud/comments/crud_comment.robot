@@ -2,7 +2,7 @@
 Documentation    Tests to verify that a comment can be created successfully 
 ...              and the API returns status code 201 whenever a comment is 
 ...              generated.
-Resource         ../../common_keywords/comments/comments.robot
+Resource         ../../comments/comments.robot
 Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
 

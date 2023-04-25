@@ -1,6 +1,6 @@
 *** Settings ***
-Resource    ../../common_keywords/pages/pages.robot
-Resource    ../../common_keywords/pages/bad_info.robot
+Resource    ../../../common_keywords/pages/pages.robot
+Resource    ../../../common_keywords/pages/bad_info.robot
 Test Teardown   Delete Page
 
 *** Test Cases ***

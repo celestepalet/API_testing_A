@@ -2,10 +2,7 @@
 Documentation    Tests to verify that a post can be created successfully 
 ...              and the API returns status code.
 Library    wordpress.src.common_imports.CommonLibraries
-Resource    ../../common_keywords/posts/posts.robot
-
-#Suite Setup   Get The Post Id In Wordpress And Verify Status Code 200    200
-#Test Teardown    Delete A Post In Wordpress And Verify Status Code 200    ${id_post}
+Resource    ../../posts/posts.robot
 
 *** Variables ***
 ${endpoint}    posts
@@ -16,4 +13,3 @@ Execute The CRUD For The Post Endpoint
     Get The Post Id In Wordpress And Verify Status Code 200    ${post_id}
     Update The Title In A Post And Verify Status Code 200    ${post_id}
     Delete A Post In Wordpress And Verify Status Code 200    ${post_id}
- 
