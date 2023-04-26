@@ -3,6 +3,7 @@ Documentation    Tests to verify that a category can be created successfully
 ...              and the API returns status code 201 whenever a category is 
 ...              generated.
 Resource         ../../categories/categories.robot
+Force Tags       Crud
 
 *** Test Cases ***
 Verify a category is created, updated and deleted successfully

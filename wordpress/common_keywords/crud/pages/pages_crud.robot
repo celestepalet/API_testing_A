@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../../pages/pages.robot
+Force Tags       Crud
 
 *** Test Cases ***
 Verify Pages Can Be Listed

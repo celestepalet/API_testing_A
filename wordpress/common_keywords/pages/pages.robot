@@ -137,6 +137,7 @@ Update Author
 
 Delete Page
     ${auth}   Get basic auth
+
     ${response}   make_request_delete    ${endpoint}   id=${id_page}   auth=${auth}
     ${response_with_format}   get_format_response  ${response}
     validate_response_status  ${response}

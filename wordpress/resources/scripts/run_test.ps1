@@ -9,16 +9,17 @@ foreach ($line in $envFile) {
 }
 
 # Runs the tests located in e2e folder
-robot -d Results wordpress/tests/e2e/
+#robot --skip known_issues -d results wordpress/tests/e2e/
+robot -d results wordpress/tests/e2e/
 
 # 3-seconds pause
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 2
 
 # Creates a new reports based on tests logs
 robotmetrics -I .\results\ -M results\new_report.html
 
 # 3-seconds pause
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 2
 
 # Open the reports in browser
 Invoke-Item results\new_report.html

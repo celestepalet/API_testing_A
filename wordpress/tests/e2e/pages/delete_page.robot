@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ../../../common_keywords/pages/pages.robot
 Resource    ../../../common_keywords/pages/bad_info.robot
+Force Tags       Pages   Pages_delete
 
 *** Test Cases ***
 Verify if a page was deleted and try to delete again it is not possible in a publish page
