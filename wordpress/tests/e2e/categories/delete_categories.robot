@@ -5,6 +5,7 @@ Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/data/responses.yaml
 Suite Setup       Create A Category For Setup
 Suite Teardown    Delete Setup Category
+Force Tags       Categories   Categories_delete
 
 *** Test Cases ***
 Verify That A Category Cannot Be Deleted Without Provide The Force Parameter

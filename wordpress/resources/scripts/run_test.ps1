@@ -12,13 +12,13 @@ foreach ($line in $envFile) {
 robot -d Results wordpress/tests/e2e/
 
 # 3-seconds pause
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 2
 
 # Creates a new reports based on tests logs
 robotmetrics -I .\results\ -M results\new_report.html
 
 # 3-seconds pause
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 2
 
 # Open the reports in browser
 Invoke-Item results\new_report.html

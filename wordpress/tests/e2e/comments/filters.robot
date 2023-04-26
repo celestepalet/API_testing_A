@@ -5,9 +5,11 @@ Documentation    Tests to verify that a comment can be created successfully
 Resource         ../../../common_keywords/comments/comments.robot
 Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
+Force Tags       Comments   Comments_filters
 
 *** Test Cases ***
 Verify search string filter returns match comments
+    [Tags]    smoke
     Generate Random Comments On Post    ${post_id}
     @{response}=    Get Comments With Filter Search    tiger
     FOR    ${element}    IN    @{response}
@@ -16,6 +18,7 @@ Verify search string filter returns match comments
     END
 
 Verify parent filter functionality returns appropiate comments
+    [Tags]    smoke
     ${comment1_id}=    Create A New Comment    Comment 1: This is a parent comment.    ${post_id}
     ${comment2_id}=    Create A New Comment From Parent    Comment 2: This is a child comment.    ${post_id}    ${comment1_id}
     ${comment3_id}=    Create A New Comment    Comment 3: This an orphan comment.    ${post_id}
@@ -25,6 +28,7 @@ Verify parent filter functionality returns appropiate comments
     Verify Comment Is Not In Results    ${comment3_id}    ${response}
 
 Verify post filter functionality positive case
+    [Tags]    smoke
     ${post_2_id}=    Create A Different Post For A Comment
     ${comment1_id}=    Create A New Comment    Comment 1: This is a comment on post 1.    ${post_id}
     ${comment2_id}=    Create A New Comment    Comment 2: This is a comment on post 2.   ${post_2_id}

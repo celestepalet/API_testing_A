@@ -3,6 +3,7 @@ Documentation    Tests to verify that a category can be created successfully
 ...              and it verifies all the created values.
 Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/data/responses.yaml
+Force Tags       Categories   Categories_create
 
 *** Test Cases ***
 Verify That The Name Parameter Of A Category Cannot Be Created With An Empty Value

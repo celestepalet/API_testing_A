@@ -5,12 +5,14 @@ Resource       ../../../common_keywords/users/users_imports.robot
 
 Test Setup  Set Password Username And Email For Users Creation
 Test Teardown  Delete New User Created
+Force Tags       Users   Users_create
 
 *** Variables ***
 ${id_user}  None
 
 *** Test Cases ***
 Verify That When Creating A User Receives Subscriber Role By Default
+    [Tags]    smoke
     ${expected_result}   Create User Without Role
     Verify That New User Was Created   subscriber   ${expected_result}
 
