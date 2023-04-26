@@ -2,6 +2,7 @@
 Resource    ../../../common_keywords/pages/pages.robot
 Resource    ../../../common_keywords/pages/bad_info.robot
 Test Teardown   Delete Page
+Force Tags       Pages   Pages_modify_bad_info
 
 *** Test Cases ***
 Verify that if a page is updated with invalid author it gives an error in a publish page

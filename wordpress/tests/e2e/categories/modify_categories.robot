@@ -5,9 +5,11 @@ Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/data/responses.yaml
 Suite Setup       Create A Category For Setup
 Suite Teardown    Delete Setup Category
+Force Tags       Categories   Categories_modify
 
 *** Test Cases ***
 Verify That The Parent Parameter Of A Category Can Be Updated With A Valid Value
+    [Tags]    smoke
     Update Category Parent    1
     Verify Equal Response    1
 
@@ -24,6 +26,7 @@ Verify That The Slug Parameter Of A Category Cannot Be Updated With An Empty Val
     Verify Not Empty Response
 
 Verify That The Description Parameter Of A Category Can Be Updated
+    [Tags]    smoke
     Update Category Description Without Id    This is a updated description
     Verify Response Message    This is a updated description
 
