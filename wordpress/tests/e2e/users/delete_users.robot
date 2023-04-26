@@ -73,3 +73,18 @@ Verify That Can Be Deleted A Contributor User With Allowed Special Characters In
     Get ID From User   ${response}
     Delete User By ID   ${id_user}
     Verify That User Is Not Displayed In Users List
+
+Verify That When Delete An Administrator User Can Not Reassing His Content To A Subscriber User
+    [Tags]  known_issues
+    ${reassing_id}=   Get ID From New User  role=subscriber
+    ${id_user}=   Get ID From New User   role=administrator
+    Delete User Reassigning His Content   ${id_user}   ${reassing_id}   status=400
+    Verify Response Message   ${response}   ${invalid_reassign_user}
+
+*** Keywords ***
+Delete User Reassigning His Content
+    [Arguments]   ${id_user}   ${reassing_id}   ${status}=200
+    ${params}=   Create Dictionary   reassign=${reassing_id}    force=true
+    ${response}=   get_request_response   delete   ${endpoint}   params=${params}   id=${id_user}   exp_status=${status}
+    Set Test Variable  ${response}
+    

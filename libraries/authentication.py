@@ -1,11 +1,13 @@
 from requests.auth import HTTPBasicAuth
-from wordpress.resources.config.config import username, password
+from wordpress.resources.config.config import Config
+
+config = Config.get_instance()
 
 
 class Authentication:
     """Gets authentication to API for different types"""
 
-    def get_basic_auth(self, username=username, password=password, **kwargs):
+    def get_basic_auth(self, username=config.username, password=config.password, **kwargs):
         """Gets basic authentication using username and password"""
         auth = HTTPBasicAuth(username, password)
         return auth
