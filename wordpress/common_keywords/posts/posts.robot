@@ -46,7 +46,6 @@ Delete A Post In Wordpress And Verify Status Code 200
     validate_response_status    ${response}
     Log    ${response} 
 
-#E2E
 Create A Post
     [Arguments]    ${body}
     ${auth}    Get Credentials
@@ -172,7 +171,8 @@ Create A Post Without Title And Content
 Move Post To Trash
     [Arguments]    ${post_id}
     ${auth}    Get credentials
-    ${response}    Make request delete    ${endpoint}    ${post_id}    auth=${auth}
+    ${params}    Create Dictionary    force=true
+    ${response}    make_request_delete   ${endpoint}    ${post_id}    params=${params}   auth=${auth}
     Validate response status    ${response}
     ${response_with_format}    Get format response    ${response}    format_json
     Log    ${response_with_format} 

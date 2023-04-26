@@ -5,6 +5,7 @@ Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/data/responses.yaml
 Force Tags       Categories   Categories_create
 
+
 *** Test Cases ***
 Verify That The Name Parameter Of A Category Cannot Be Created With An Empty Value
     Create A Category With Name    ${EMPTY}
