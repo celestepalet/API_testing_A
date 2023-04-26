@@ -29,3 +29,4 @@ empty_name: "A name is required for this term."
 delete_without_force: "Terms do not support trashing. Set 'force=true' to delete."
 default_category: "Sorry, you are not allowed to delete this term."
 category_without_name: "Missing parameter(s): name"
+invalid_reassign_user: 'Invalid parameter(s): reassign'
