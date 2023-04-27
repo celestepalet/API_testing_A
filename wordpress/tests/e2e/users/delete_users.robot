@@ -89,4 +89,3 @@ Delete User Reassigning His Content
     ${params}=   Create Dictionary   reassign=${reassing_id}    force=true
     ${response}=   get_request_response   delete   ${endpoint}   params=${params}   id=${id_user}   exp_status=${status}
     Set Test Variable  ${response}
-    

@@ -94,32 +94,29 @@ In bash terminal run the command: PYTHONPATH=$PWD
          ├── results                           (Save the logs and reports)
          |
          └── wordpress                         (Robot-framework and python files specific for test WordPress API)
-             ├── src                           (Python files personalize for each endpoint)       
-             |    ├── actions                      
-             |    ├── states                      
-             |    └── verifications
+             ├── src                           (Python files personalize for each endpoint)
              |
              ├── commonkeywords                (Keywords that are common in several files)
              |    ├── crud                     (Tests cases for minimal functionalities)
-             |    ├── categories  
-             |    ├── commnents  
-             |    ├── pages  
-             |    ├── posts  
-             |    └── users
+             |    ├── categories               (crud tests for categories endpoint)   
+             |    ├── commnents                (crud tests for comments endpoint)   
+             |    ├── pages                    (crud tests for pages endpoint)   
+             |    ├── posts                    (crud tests for posts endpoint)   
+             |    └── users                    (crud tests for users endpoint)   
              |
              ├── resources                      (Files to provide resources to the project)
              |    ├── config                    (Files to configurate the project)
-             |    ├── data   
-             |    ├── script                 
+             |    ├── data                      (Files whit data to provide to the project)
+             |    ├── script                    (Scripts to run the project)
              |    └── json                      (Json files with request schemas)
              |                        
              └── tests                          (Set of test suites or test cases in robot-framework files)
                   └── e2e                       (End to end tests cases)
-                      ├── categories                      
-                      ├── comments   
-                      ├── pages 
-                      ├── posts 
-                      └── users      
+                      ├── categories            (e2e scenarios for categories endpoint)                
+                      ├── comments              (e2e scenarios for comments endpoint)  
+                      ├── pages                 (e2e scenarios for pages endpoint)  
+                      ├── posts                 (e2e scenarios for posts endpoint)  
+                      └── users                 (e2e scenarios for users endpoint)    
             
 ### 4. Execution examples
 
@@ -157,6 +154,11 @@ Also, the Test can be run by executing the following commands:
     "reports" directory. The -i Smoke option indicates to only execute the test cases with "Smoke" 
     tag defined.
 
+For creates other type of reports based on tests logs, we use the robotframework-metrics 3.3.3 library.
+
+1. robotmetrics -I .\results\ -M results\new_report.html
+
+    This command create the new reports, run it after some of the above commands
 
 ### 5. References
 https://github.com/robotframework/HowToWriteGoodTestCases/blob/master/HowToWriteGoodTestCases.rst
