@@ -5,7 +5,7 @@ Resource         ../../../common_keywords/categories/categories.robot
 Variables        ../../../resources/data/responses.yaml
 Suite Setup       Create A Category For Setup
 Suite Teardown    Delete Setup Category
-Force Tags       Categories   Categories_modify
+Force Tags       Categories   Categories_modify   Regression
 
 *** Test Cases ***
 Verify That The Parent Parameter Of A Category Can Be Updated With A Valid Value
@@ -14,10 +14,12 @@ Verify That The Parent Parameter Of A Category Can Be Updated With A Valid Value
     Verify Equal Response    1
 
 Verify That The Parent Parameter Of A Category Cannot Be Updated With A Non-Existent Value
+    [Tags]    uat
     Update Invalid Category Parent    987
     Verify Response Message    ${invalid_parent}
 
 Verify That The Parent Parameter Of A Category Cannot Be Updated With An Empty Value
+    [Tags]    uat
     Update Invalid Category Parent    ${EMPTY}  
     Verify Response Message    ${empty_parent}
 

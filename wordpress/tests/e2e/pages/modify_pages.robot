@@ -1,17 +1,17 @@
 *** Settings ***
 Resource    ../../../common_keywords/pages/pages.robot
 Test Teardown   Delete Page
-Force Tags       Pages   Pages_modify
+Force Tags       Pages   Pages_modify    Regression
 
 *** Test Cases ***
 Verify that is posible to change status page from draft to publish when it was created
-    [Tags]    smoke
+    [Tags]    smoke   uat
     Create Page With Desired Status    draft
     Update Page To Other Status       publish
     Verify The Page Changes The Status
 
 Verify that is posible to change status page from publish to draft when it was created
-    [Tags]    smoke
+    [Tags]    smoke   uat
     Create Page With Desired Status   publish
     Update Page To Other Status       draft
     Verify The Page Changes The Status

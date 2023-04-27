@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../pages/pages.robot
-Force Tags       Crud
+Force Tags       Crud   Regression
 
 *** Test Cases ***
 Verify Pages Can Be Listed
