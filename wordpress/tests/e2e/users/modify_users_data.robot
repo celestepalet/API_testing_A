@@ -3,10 +3,11 @@ Documentation  Tests to verify scenarios that creates more than one user
 ...            whit data repeted.
 Resource       ../../../common_keywords/users/users_imports.robot
 Test Teardown  Delete New User Created
-Force Tags       Users   Users_modify
+Force Tags       Users   Users_modify  Regression
 
 *** Test Cases ***
 Verify That Can Not Be Changed The Username Of An Administrator After Create It
+    [Tags]    uat
     ${id_user}=   Get ID From New User   role=administrator
     ${message}=   Modify User With A Different Username   ${id_user}   status=400
     Verify Response Message    actual=${message}   expected=${username_not_editable}
@@ -19,6 +20,7 @@ Verify That Can Be Changed The Email Of An Administrator User After Create It
     Verify User Was Update   ${expected_result}    element_to_verify=${email}
 
 Verify That Can Not Be Changed The Email Of An Administrator User After Create It If The Email Bellow To Other User
+    [Tags]    uat
     ${email_in_use}=   Get Email In Use
     ${id_user}=   Get ID From New User   role=administrator
     ${message}=   Modify User With A Different Email   ${email_in_use}    ${id_user}      status=400

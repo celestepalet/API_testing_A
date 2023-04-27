@@ -3,7 +3,7 @@ Documentation    Tests to verify that a post can be created successfully
 ...              and the API returns status code.
 Library    wordpress.src.common_imports.CommonLibraries
 Resource    ../../posts/posts.robot
-Force Tags       Crud
+Force Tags       Crud   Regression
 
 *** Variables ***
 ${endpoint}    posts

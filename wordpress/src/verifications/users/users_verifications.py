@@ -6,12 +6,11 @@ import json
 
 class UsersVerification:
     """Validates a request response"""
-
-    def verify_actual_equal_expected(self, actual, expected, ignore=[]):
+    def verify_actual_equal_expected(self, actual_dictionary, expected_dictionary, ignore=[]):
         """Verify that expected and actual results are equal"""
-        logger.info(f'Actual result: {actual}')
-        logger.info(f'Expected result: {expected}')
-        assert_that(actual).is_equal_to(expected, ignore=ignore)
+        logger.info(f'Actual result: {actual_dictionary}')
+        logger.info(f'Expected result: {expected_dictionary}')
+        assert_that(actual_dictionary).is_equal_to(expected_dictionary, ignore=ignore)
         if ignore != []:
             logger.info(f'Are ignored: {ignore}')
 

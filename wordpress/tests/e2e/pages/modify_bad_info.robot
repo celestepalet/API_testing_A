@@ -2,15 +2,17 @@
 Resource    ../../../common_keywords/pages/pages.robot
 Resource    ../../../common_keywords/pages/bad_info.robot
 Test Teardown   Delete Page
-Force Tags       Pages   Pages_modify_bad_info
+Force Tags       Pages   Pages_modify_bad_info    Regression
 
 *** Test Cases ***
 Verify that if a page is updated with invalid author it gives an error in a publish page
+    [Tags]    uat
     Create Page With Desired Status   publish
     Update Author With Bad Info   3
     Verify Author Error Info
 
 Verify that if a page is updated with invalid author it gives an error in a draft page
+    [Tags]    uat
     Create Page With Desired Status   draft
     Update Author With Bad Info   4
     Verify Author Error Info

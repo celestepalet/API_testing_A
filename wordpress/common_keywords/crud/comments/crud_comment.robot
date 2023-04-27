@@ -5,7 +5,7 @@ Documentation    Tests to verify that a comment can be created successfully
 Resource         ../../comments/comments.robot
 Suite Setup       Create A Post For A Comment
 Suite Teardown    Delete Post Created For The Comment
-Force Tags       Crud
+Force Tags       Crud   Regression
 
 *** Test Cases ***
 Verify that a comment can be created edited and deleted successfully

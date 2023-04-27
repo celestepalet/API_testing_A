@@ -3,7 +3,7 @@ Documentation    Verify scenarios in public, private and draft Post endpoints.
 Library    wordpress.src.common_imports.CommonLibraries
 Resource    ../../../common_keywords/get_credentials.robot
 Resource    ../../../common_keywords/posts/posts.robot
-Force Tags       Posts
+Force Tags       Posts    Regression
 
 *** Variables ***
 ${endpoint}     posts
@@ -24,11 +24,13 @@ Verify that a published post can be unpublished and saved on drafts
     Move Post To Trash    ${post_id}
 
 Verify That The Server failed When The Title In A Post Receive More Than 65600
+    [Tags]    uat
     Create A Published Post
     Update A Post With 65600 Characters    ${post_id}
     Move Post To Trash    ${post_id}
 
 Verify That An Error 400 Is Displayed When The User Creates A Post With All Fields Empty
+    [Tags]    uat
     Create A Post Without Title And Content
 
 Verify That The Content Can Be Edited In A Published Post

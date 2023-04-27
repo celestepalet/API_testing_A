@@ -3,13 +3,14 @@ Documentation  Tests to verify scenarios that deleted users
 ...            whit differents roels and data.
 Resource       ../../../common_keywords/users/users_imports.robot
 Test Setup  Set Password Username And Email For Users Creation
-Force Tags       Users   Users_delete
+Force Tags       Users   Users_delete    Regression
 
 *** Variables ***
 ${username_allow_characters}   user_name.with-characters
 
 *** Test Cases ***
 Verify That An Administartor Can Not Be Deleted An User If There Is Not Other User For Reasign
+    [Tags]    uat
      ${id_user}=   Get ID From New User  role=administrator
      Delete User By ID   ${id_user}  status=400
      Verify Response Message   ${response}  ${no_reassign_user}
@@ -23,6 +24,7 @@ Verify That Can Be Deleted An Administrator User With Allowed Special Characters
     Verify That User Is Not Displayed In Users List
 
 Verify That An Editor Can Not Be Deleted An User If There Is Not Other User For Reasign
+    [Tags]    uat
      ${id_user}=   Get ID From New User  role=editor
      Delete User By ID   ${id_user}   status=400
      Verify Response Message   ${response}    ${no_reassign_user}

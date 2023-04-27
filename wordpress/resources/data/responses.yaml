@@ -15,7 +15,7 @@ body_no_password: {"username":"username","email":"email@at19.com"}
 body_no_email: {"username":"username","password":"password"}
 default_role: 'subscriber'
 username_61_characters:  'characterscharacterscharacterscharacterscharacterscharacters1'
-username_to_long: 'Username may not be longer than 60 characters.'
+username_too_long: 'Username may not be longer than 60 characters.'
 email_invalid_format: 'noformatmail'
 invalid_parameter_email: 'Invalid parameter(s): email'
 no_reassign_user: 'Missing parameter(s): reassign'
@@ -30,3 +30,5 @@ delete_without_force: "Terms do not support trashing. Set 'force=true' to delete
 default_category: "Sorry, you are not allowed to delete this term."
 category_without_name: "Missing parameter(s): name"
 invalid_reassign_user: 'Invalid parameter(s): reassign'
+email_101_characters: 'abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij@exmple.com'
+email_too_long: 'Email may not be longer than 100 characters.'
