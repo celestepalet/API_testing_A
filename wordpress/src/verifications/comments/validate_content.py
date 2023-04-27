@@ -4,7 +4,6 @@ from assertpy import assert_that
 
 class ValidateContent:
     """Validates a request response"""
-
     def validate_content(self, content, response, **kwargs):
         """Validates that the content is included in the response of a request"""
         assert_that(response).contains(content)
