@@ -9,7 +9,7 @@ foreach ($line in $envFile) {
 }
 
 # Runs the tests located in e2e folder
-#robot --skip known_issues -d results wordpress/tests/e2e/
+#robot --skip known_issues --skip bug -d results wordpress/tests/e2e/
 robot -d results wordpress/tests/e2e/
 
 # 3-seconds pause
